@@ -37,27 +37,6 @@ views:
             name: Almedina
             icon: mdi:car
 
-      # Front door camera
-      - type: picture-glance
-        title: Front Door
-        camera_image: camera.front_door
-        entities:
-          - entity: binary_sensor.doorbell
-            name: Motion
-          - entity: binary_sensor.sensor_hausture
-            name: Door
-
-      # Air Quality
-      - type: glance
-        title: Air Quality (Karlsfeld)
-        entities:
-          - entity: sensor.sensor_44750_pm2_5
-            name: PM2.5
-            icon: mdi:air-filter
-          - entity: sensor.sensor_44750_pm10
-            name: PM10
-            icon: mdi:air-filter
-
       - type: history-graph
         title: Air Quality Today
         hours_to_show: 24
