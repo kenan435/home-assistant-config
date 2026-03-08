@@ -67,14 +67,16 @@ views:
       - type: glance
         title: Raspberry Pi
         entities:
-          - entity: sensor.processor_use
+          - entity: sensor.system_monitor_processor_use
             name: CPU
-          - entity: sensor.memory_use_percent
+          - entity: sensor.system_monitor_memory_usage
             name: RAM
-          - entity: sensor.disk_use_percent
+          - entity: sensor.system_monitor_disk_use
             name: Disk
-          - entity: sensor.processor_temperature
+          - entity: sensor.system_monitor_processor_temperature
             name: Temp
+          - entity: sensor.system_monitor_last_boot
+            name: Last Boot
 
       # All blinds
       - type: entities
