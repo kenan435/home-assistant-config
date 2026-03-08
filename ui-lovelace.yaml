@@ -37,6 +37,12 @@ views:
             name: Almedina
             icon: mdi:car
 
+      # Front door camera + security
+      - type: iframe
+        url: http://192.168.136.99/#picture
+        aspect_ratio: 56%
+        title: Front Door Camera
+
       # Security & Sensors
       - type: glance
         title: Security
