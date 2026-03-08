@@ -66,18 +66,18 @@
 # When the doorbell button is pressed, this sensor briefly pulses to "on".
 
 - id: doorbell_notification
-  alias: "Doorbell - Push Notification"
-  description: "Send push notification when front door sensor triggers (doorbell press)"
+  alias: "Front Door Motion - Push Notification"
+  description: "Notify when motion detected at front door (KNX sensor 2/2/1). SIP doorbell TBD."
   mode: single
   triggers:
     - platform: state
-      entity_id: binary_sensor.sensor_hausture
+      entity_id: binary_sensor.doorbell
       to: "on"
   conditions: []
   actions:
     - action: notify.mobile_app_kenans_iphone
       data:
-        title: "🔔 Doorbell"
+        title: "🔔 Front Door"
         message: "Someone is at the front door!"
         data:
           push:
