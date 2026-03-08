@@ -19,6 +19,18 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
+# ─── LOXONE INTERCOM ─────────────────────────────────────────────────────────
+rest:
+  - resource: "http://192.168.136.99/dev/gpio"
+    username: homeassistant
+    password: loxone2024
+    authentication: basic
+    scan_interval: 5
+    sensor:
+      - name: "Loxone Intercom GPIO"
+        unique_id: loxone_intercom_gpio_raw
+        value_template: "{{ value }}"
+
 cover:
   - platform: group
     name: "Living Room Blinds"

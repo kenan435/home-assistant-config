@@ -61,6 +61,33 @@
           - light.licht_heizung
           - light.licht_treppe_wand
 
+# ─── DOORBELL NOTIFICATION ───────────────────────────────────────────────────
+# Polls Loxone Intercom GPIO state. Fires when I/O port value changes (doorbell press).
+# The raw value from /dev/gpio is stored in sensor.loxone_intercom_gpio.
+# Adjust the trigger value_template once we know the exact response format.
+
+- id: doorbell_notification
+  alias: "Doorbell - Push Notification"
+  description: "Send push notification when doorbell is pressed (Loxone I/O port)"
+  mode: single
+  triggers:
+    - platform: state
+      entity_id: sensor.loxone_intercom_gpio
+  conditions:
+    - condition: template
+      value_template: >
+        {{ trigger.to_state.state != trigger.from_state.state
+           and trigger.to_state.state not in ['unavailable', 'unknown'] }}
+  actions:
+    - action: notify.mobile_app_kenans_iphone
+      data:
+        title: "Doorbell"
+        message: "Someone is at the front door!"
+        data:
+          push:
+            sound: default
+          tag: doorbell
+
 # ─── BATHROOM LIGHTS - MOTION CONTROL ────────────────────────────────────────
 
 - id: bathroom_motion_on
