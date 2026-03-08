@@ -47,12 +47,6 @@ cover:
       - cover.rollo_schlafen_1
       - cover.rollo_schlafen_2
 
-camera:
-  - platform: generic
-    name: "Front Door"
-    still_image_url: "http://192.168.136.99/img/snapshot.jpg"
-    framerate: 2
-
 input_boolean:
   kuche_motion_control:
     name: Küche Bewegungssteuerung
