@@ -17,6 +17,11 @@ views:
             name: Almedina
             show_entity_picture: true
 
+      # Weather
+      - type: weather-forecast
+        entity: weather.forecast_home
+        forecast_type: daily
+
       # Security & Sensors
       - type: glance
         title: Security
