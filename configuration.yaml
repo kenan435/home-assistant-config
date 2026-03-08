@@ -12,6 +12,11 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
+input_boolean:
+  kuche_motion_control:
+    name: Küche Bewegungssteuerung
+    icon: mdi:motion-sensor
+
 knx:
   binary_sensor:
     - name: "Sensor Bewegung EG"
