@@ -43,6 +43,17 @@ views:
         aspect_ratio: 56%
         title: Front Door Camera
 
+      # Air Quality
+      - type: glance
+        title: Air Quality (Karlsfeld)
+        entities:
+          - entity: sensor.sensor_44750_pm2_5
+            name: PM2.5
+            icon: mdi:air-filter
+          - entity: sensor.sensor_44750_pm10
+            name: PM10
+            icon: mdi:air-filter
+
       # Security & Sensors
       - type: glance
         title: Security
