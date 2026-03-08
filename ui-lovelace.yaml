@@ -1,0 +1,252 @@
+title: Smart Home
+views:
+  # ─── ÜBERSICHT ───────────────────────────────────────────────────────────────
+  - title: Übersicht
+    icon: mdi:home
+    path: uebersicht
+    cards:
+      - type: glance
+        title: Sensoren & Sicherheit
+        entities:
+          - entity: binary_sensor.doorbell
+            name: Bewegung EG
+          - entity: binary_sensor.sensor_hausture
+            name: Haustüre
+
+      - type: horizontal-stack
+        cards:
+          - type: tile
+            entity: switch.garagentor
+            name: Garagentor
+            icon: mdi:garage
+          - type: tile
+            entity: switch.schalten_terrasse
+            name: Terrasse
+            icon: mdi:patio-heater
+
+      - type: entities
+        title: Alle Rollos
+        entities:
+          - entity: cover.rollo_wohnen_1
+            name: Rollo Wohnen 1
+          - entity: cover.living_room_blind_2
+            name: Rollo Wohnen 2
+          - entity: cover.living_room_blind_3
+            name: Rollo Wohnen 3
+          - entity: cover.living_room_blind_5
+            name: Rollo Wohnen 4
+          - entity: cover.living_room_blind_4
+            name: Rollo Küche 1
+          - entity: cover.blind_6
+            name: Rollo Küche 2
+          - entity: cover.office_blind
+            name: Rollo Büro
+          - entity: cover.blind_7
+            name: Rollo Büro 1
+          - entity: cover.blind_8
+            name: Rollo Büro 2
+          - entity: cover.rollo_schlafen_1
+            name: Rollo Schlafen 1
+          - entity: cover.rollo_schlafen_2
+            name: Rollo Schlafen 2
+          - entity: cover.rollo_bad
+            name: Rollo Bad
+          - entity: cover.rollo_kind
+            name: Rollo Kind
+          - entity: cover.rollo_zimmer
+            name: Rollo Zimmer
+          - entity: cover.rollo_wc
+            name: Rollo WC
+
+  # ─── WOHNZIMMER ──────────────────────────────────────────────────────────────
+  - title: Wohnzimmer
+    icon: mdi:sofa
+    path: wohnzimmer
+    cards:
+      - type: entities
+        title: Licht
+        entities:
+          - entity: light.licht_wohnen
+            name: Wohnen
+          - entity: light.licht_essen
+            name: Essen
+          - entity: light.hue_color_spot_1
+            name: Spot 1
+          - entity: light.hue_color_spot_2
+            name: Spot 2
+          - entity: light.hue_color_spot_3
+            name: Spot 3
+          - entity: light.hue_color_spot_4
+            name: Spot 4
+          - entity: light.hue_color_spot_5
+            name: Spot 5
+          - entity: light.hue_color_spot_6
+            name: Spot 6
+
+      - type: entities
+        title: Rollos
+        entities:
+          - entity: cover.rollo_wohnen_1
+            name: Rollo Wohnen 1
+          - entity: cover.living_room_blind_2
+            name: Rollo Wohnen 2
+          - entity: cover.living_room_blind_3
+            name: Rollo Wohnen 3
+          - entity: cover.living_room_blind_5
+            name: Rollo Wohnen 4
+
+  # ─── KÜCHE ───────────────────────────────────────────────────────────────────
+  - title: Küche
+    icon: mdi:countertop
+    path: kueche
+    cards:
+      - type: entities
+        title: Licht
+        entities:
+          - entity: light.licht_kuche
+            name: Küche
+          - entity: light.licht_kuche_steckdose
+            name: Küche Steckdose
+
+      - type: entities
+        title: Rollos
+        entities:
+          - entity: cover.living_room_blind_4
+            name: Rollo Küche 1
+          - entity: cover.blind_6
+            name: Rollo Küche 2
+
+  # ─── SCHLAFZIMMER ────────────────────────────────────────────────────────────
+  - title: Schlafzimmer
+    icon: mdi:bed
+    path: schlafzimmer
+    cards:
+      - type: entities
+        title: Licht
+        entities:
+          - entity: light.licht_schlafen
+            name: Schlafzimmer
+
+      - type: entities
+        title: Rollos
+        entities:
+          - entity: cover.rollo_schlafen_1
+            name: Rollo Schlafen 1
+          - entity: cover.rollo_schlafen_2
+            name: Rollo Schlafen 2
+
+  # ─── BÜRO ────────────────────────────────────────────────────────────────────
+  - title: Büro
+    icon: mdi:desk
+    path: buero
+    cards:
+      - type: entities
+        title: Rollos
+        entities:
+          - entity: cover.office_blind
+            name: Rollo Büro
+          - entity: cover.blind_7
+            name: Rollo Büro 1
+          - entity: cover.blind_8
+            name: Rollo Büro 2
+
+  # ─── ZIMMER & KINDERZIMMER ───────────────────────────────────────────────────
+  - title: Zimmer & Kind
+    icon: mdi:door
+    path: zimmer
+    cards:
+      - type: entities
+        title: Licht
+        entities:
+          - entity: light.licht_zimmer
+            name: Zimmer
+          - entity: light.licht_kind
+            name: Kinderzimmer
+
+      - type: entities
+        title: Rollos
+        entities:
+          - entity: cover.rollo_zimmer
+            name: Rollo Zimmer
+          - entity: cover.rollo_kind
+            name: Rollo Kind
+
+  # ─── AUSSSEN & EINGANG ───────────────────────────────────────────────────────
+  - title: Außen & Eingang
+    icon: mdi:home-outline
+    path: aussen
+    cards:
+      - type: entities
+        title: Licht
+        entities:
+          - entity: light.licht_hausture
+            name: Haustüre
+          - entity: light.licht_terrasse
+            name: Terrasse
+          - entity: light.licht_flur_eg
+            name: Flur EG
+          - entity: light.licht_flur_og
+            name: Flur OG
+          - entity: light.licht_ug_flur
+            name: UG Flur
+          - entity: light.licht_treppe_wand
+            name: Treppe Wand
+          - entity: light.licht_treppe_eg_wand
+            name: Treppe EG Wand
+
+      - type: horizontal-stack
+        cards:
+          - type: tile
+            entity: switch.garagentor
+            name: Garagentor
+            icon: mdi:garage
+          - type: tile
+            entity: switch.schalten_terrasse
+            name: Terrasse
+            icon: mdi:patio-heater
+
+      - type: glance
+        title: Sensoren Eingang
+        entities:
+          - entity: binary_sensor.sensor_hausture
+            name: Haustüre
+
+  # ─── BAD & WC ────────────────────────────────────────────────────────────────
+  - title: Bad & WC
+    icon: mdi:shower
+    path: bad
+    cards:
+      - type: entities
+        title: Licht
+        entities:
+          - entity: light.licht_wc
+            name: WC
+          - entity: light.licht_wc_wand
+            name: WC Wand
+
+      - type: entities
+        title: Rollos
+        entities:
+          - entity: cover.rollo_bad
+            name: Rollo Bad
+          - entity: cover.rollo_wc
+            name: Rollo WC
+
+  # ─── KELLER & SONSTIGES ──────────────────────────────────────────────────────
+  - title: Keller & Sonstiges
+    icon: mdi:stairs-down
+    path: keller
+    cards:
+      - type: entities
+        title: Licht
+        entities:
+          - entity: light.licht_keller
+            name: Keller
+          - entity: light.licht_ug_flur
+            name: UG Flur
+          - entity: light.licht_hobby
+            name: Hobby
+          - entity: light.licht_heizungsraum
+            name: Heizungsraum
+          - entity: light.licht_heizung
+            name: Heizung
