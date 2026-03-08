@@ -12,6 +12,34 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
+cover:
+  - platform: group
+    name: "Living Room Blinds"
+    entities:
+      - cover.living_room_blind_1
+      - cover.living_room_blind_2
+      - cover.living_room_blind_3
+      - cover.living_room_blind_4
+
+  - platform: group
+    name: "Kitchen Blinds"
+    entities:
+      - cover.kitchen_blind_1
+      - cover.kitchen_blind_2
+
+  - platform: group
+    name: "Office Blinds"
+    entities:
+      - cover.office_blind
+      - cover.office_blind_1
+      - cover.office_blind_2
+
+  - platform: group
+    name: "Bedroom Blinds"
+    entities:
+      - cover.bedroom_blind_1
+      - cover.bedroom_blind_2
+
 input_boolean:
   kuche_motion_control:
     name: Küche Bewegungssteuerung
