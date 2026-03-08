@@ -1,0 +1,52 @@
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Load frontend themes from the themes folder
+frontend:
+  themes: !include_dir_merge_named themes
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+knx:
+  cover:
+    - name: "Living Room Blind 2"
+      move_long_address: "2/2/40"
+      stop_address: "2/2/41"
+      position_state_address: "2/2/43"
+
+    - name: "Living Room Blind 3"
+      move_long_address: "2/2/50"
+      stop_address: "2/2/51"
+      position_state_address: "2/2/53"
+
+    - name: "Living Room Blind 4"
+      move_long_address: "2/2/70"
+      stop_address: "2/2/71"
+      position_state_address: "2/2/73"
+
+    - name: "Living Room Blind 5"
+      move_long_address: "2/2/120"
+      stop_address: "2/2/121"
+      position_state_address: "2/2/123"
+
+    - name: "Blind 6"
+      move_long_address: "2/2/80"
+      stop_address: "2/2/81"
+      position_state_address: "2/2/83"
+
+    - name: "Blind 7"
+      move_long_address: "2/2/100"
+      stop_address: "2/2/101"
+      position_state_address: "2/2/103"
+
+    - name: "Blind 8"
+      move_long_address: "2/2/110"
+      stop_address: "2/2/111"
+      position_state_address: "2/2/113"
+
+    - name: "Office Blind"
+      move_long_address: "2/2/90"
+      stop_address: "2/2/91"
+      position_state_address: "2/2/93"
