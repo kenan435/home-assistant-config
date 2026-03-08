@@ -75,6 +75,8 @@ views:
             name: Living Room
           - entity: light.licht_essen
             name: Dining Room
+          - entity: light.floor_lamp_2
+            name: Floor Lamp
           - entity: light.hue_color_spot_1
             name: Spot 1
           - entity: light.hue_color_spot_2
