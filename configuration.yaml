@@ -19,6 +19,15 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
+# Front door camera — curl runs on the Pi (same LAN as intercom)
+# Grabs one JPEG frame every 5 seconds from the MJPEG stream
+camera:
+  - platform: cmd_line
+    name: "Front Door"
+    command: "curl -s --max-time 4 http://192.168.136.99/video 2>/dev/null | head -c 200000"
+    content_type: "image/jpeg"
+    scan_interval: 5
+
 template:
   - sensor:
       - name: "Last Doorbell Ring"
