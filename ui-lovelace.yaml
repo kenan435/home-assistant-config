@@ -1,18 +1,43 @@
 title: Smart Home
 views:
   # ─── ÜBERSICHT ───────────────────────────────────────────────────────────────
-  - title: Übersicht
+  - title: Home
     icon: mdi:home
     path: uebersicht
     cards:
+      # Who is home
+      - type: custom:mushroom-chips-card
+        alignment: center
+        chips:
+          - type: entity
+            entity: person.kenan
+            icon_color: green
+          - type: entity
+            entity: person.almedina_cell
+            icon_color: pink
+
+      - type: horizontal-stack
+        cards:
+          - type: tile
+            entity: person.kenan
+            name: Kenan
+          - type: tile
+            entity: device_tracker.almedina_cell
+            name: Almedina
+
+      # Security & Sensors
       - type: glance
-        title: Sensors & Security
+        title: Security
         entities:
-          - entity: binary_sensor.doorbell
-            name: Motion EG
+          - entity: binary_sensor.sensor_bewegung_eg
+            name: Motion
           - entity: binary_sensor.sensor_hausture
             name: Front Door
+          - entity: switch.garagentor
+            name: Garage
+            icon: mdi:garage
 
+      # Quick controls
       - type: horizontal-stack
         cards:
           - type: tile
@@ -24,6 +49,44 @@ views:
             name: Terrace
             icon: mdi:patio-heater
 
+      # Room temperatures at a glance
+      - type: glance
+        title: Temperatures
+        entities:
+          - entity: sensor.temperature_wohnzimmer
+            name: Living Room
+          - entity: sensor.temperature_schlafzimmer
+            name: Bedroom
+          - entity: sensor.temperature_kuche
+            name: Kitchen
+          - entity: sensor.temperature_bad
+            name: Bathroom
+          - entity: sensor.temperature_buro
+            name: Office
+
+      # Internet speed
+      - type: glance
+        title: Internet
+        entities:
+          - entity: sensor.internetgatewaydevicev2_fritz_box_7590_ax_download_speed
+            name: Download
+          - entity: sensor.internetgatewaydevicev2_fritz_box_7590_ax_upload_speed
+            name: Upload
+
+      # Raspberry Pi stats
+      - type: glance
+        title: Raspberry Pi
+        entities:
+          - entity: sensor.processor_use
+            name: CPU
+          - entity: sensor.memory_use_percent
+            name: RAM
+          - entity: sensor.disk_use_percent
+            name: Disk
+          - entity: sensor.processor_temperature
+            name: Temp
+
+      # All blinds
       - type: entities
         title: All Blinds
         entities:
