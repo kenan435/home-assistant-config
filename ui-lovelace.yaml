@@ -108,40 +108,26 @@ views:
           - entity: sensor.system_monitor_last_boot
             name: Last Boot
 
-      # All blinds
+      # Blind groups
       - type: entities
-        title: All Blinds
+        title: Blinds
         entities:
-          - entity: cover.rollo_wohnen_1
-            name: Living Room Blind 1
-          - entity: cover.living_room_blind_2
-            name: Living Room Blind 2
-          - entity: cover.living_room_blind_3
-            name: Living Room Blind 3
-          - entity: cover.living_room_blind_5
-            name: Living Room Blind 4
-          - entity: cover.living_room_blind_4
-            name: Kitchen Blind 1
-          - entity: cover.blind_6
-            name: Kitchen Blind 2
-          - entity: cover.office_blind
-            name: Office Blind
-          - entity: cover.blind_7
-            name: Office Blind 1
-          - entity: cover.blind_8
-            name: Office Blind 2
-          - entity: cover.rollo_schlafen_1
-            name: Bedroom Blind 1
-          - entity: cover.rollo_schlafen_2
-            name: Bedroom Blind 2
+          - entity: cover.living_room_blinds
+            name: Living Room
+          - entity: cover.kitchen_blinds
+            name: Kitchen
+          - entity: cover.office_blinds
+            name: Office
+          - entity: cover.bedroom_blinds
+            name: Bedroom
           - entity: cover.rollo_bad
-            name: Bathroom Blind
-          - entity: cover.rollo_kind
-            name: Kids Room Blind
-          - entity: cover.rollo_zimmer
-            name: Room Blind
+            name: Bathroom
           - entity: cover.rollo_wc
-            name: WC Blind
+            name: WC
+          - entity: cover.rollo_zimmer
+            name: Room
+          - entity: cover.rollo_kind
+            name: Kids Room
 
   # ─── LIVING ROOM ─────────────────────────────────────────────────────────────
   - title: Living Room
