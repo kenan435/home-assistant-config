@@ -40,6 +40,27 @@
       target:
         entity_id: light.licht_kuche_steckdose
 
+# ─── BASEMENT LIGHTS OFF AT 10 PM ────────────────────────────────────────────
+
+- id: basement_lights_off_10pm
+  alias: "Basement Lights Off at 10 PM"
+  description: "Turn off all basement lights at 22:00 every day"
+  mode: single
+  triggers:
+    - platform: time
+      at: "22:00:00"
+  conditions: []
+  actions:
+    - action: light.turn_off
+      target:
+        entity_id:
+          - light.licht_keller
+          - light.licht_ug_flur
+          - light.licht_hobby
+          - light.licht_heizungsraum
+          - light.licht_heizung
+          - light.licht_treppe_wand
+
 # ─── BATHROOM LIGHTS - MOTION CONTROL ────────────────────────────────────────
 
 - id: bathroom_motion_on
