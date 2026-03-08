@@ -19,6 +19,19 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
+template:
+  - sensor:
+      - name: "Last Doorbell Ring"
+        unique_id: last_doorbell_ring
+        icon: mdi:doorbell
+        state: >
+          {% set t = state_attr('automation.front_door_motion_push_notification', 'last_triggered') %}
+          {% if t %}
+            {{ t | as_timestamp | timestamp_custom('%-H:%M, %d.%m.%Y') }}
+          {% else %}
+            Never
+          {% endif %}
+
 
 cover:
   - platform: group

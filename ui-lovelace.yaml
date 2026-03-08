@@ -42,12 +42,17 @@ views:
         title: Security
         entities:
           - entity: binary_sensor.doorbell
-            name: Motion EG
+            name: Front Door Motion
+            icon: mdi:motion-sensor
           - entity: binary_sensor.sensor_hausture
-            name: Front Door
+            name: Door Contact
+            icon: mdi:door
           - entity: switch.garagentor
             name: Garage
             icon: mdi:garage
+          - entity: sensor.last_doorbell_ring
+            name: Last Ring
+            icon: mdi:doorbell
 
       # Quick controls
       - type: horizontal-stack
