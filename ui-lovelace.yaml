@@ -27,35 +27,35 @@ views:
       - type: entities
         title: All Blinds
         entities:
-          - entity: cover.living_room_blind_1
+          - entity: cover.rollo_wohnen_1
             name: Living Room Blind 1
           - entity: cover.living_room_blind_2
             name: Living Room Blind 2
           - entity: cover.living_room_blind_3
             name: Living Room Blind 3
-          - entity: cover.living_room_blind_4
+          - entity: cover.living_room_blind_5
             name: Living Room Blind 4
-          - entity: cover.kitchen_blind_1
+          - entity: cover.living_room_blind_4
             name: Kitchen Blind 1
-          - entity: cover.kitchen_blind_2
+          - entity: cover.blind_6
             name: Kitchen Blind 2
           - entity: cover.office_blind
             name: Office Blind
-          - entity: cover.office_blind_1
+          - entity: cover.blind_7
             name: Office Blind 1
-          - entity: cover.office_blind_2
+          - entity: cover.blind_8
             name: Office Blind 2
-          - entity: cover.bedroom_blind_1
+          - entity: cover.rollo_schlafen_1
             name: Bedroom Blind 1
-          - entity: cover.bedroom_blind_2
+          - entity: cover.rollo_schlafen_2
             name: Bedroom Blind 2
-          - entity: cover.bathroom_blind
+          - entity: cover.rollo_bad
             name: Bathroom Blind
-          - entity: cover.kids_room_blind
+          - entity: cover.rollo_kind
             name: Kids Room Blind
-          - entity: cover.room_blind
+          - entity: cover.rollo_zimmer
             name: Room Blind
-          - entity: cover.wc_blind
+          - entity: cover.rollo_wc
             name: WC Blind
 
   # ─── LIVING ROOM ─────────────────────────────────────────────────────────────
@@ -86,13 +86,13 @@ views:
       - type: entities
         title: Blinds
         entities:
-          - entity: cover.living_room_blind_1
+          - entity: cover.rollo_wohnen_1
             name: Living Room Blind 1
           - entity: cover.living_room_blind_2
             name: Living Room Blind 2
           - entity: cover.living_room_blind_3
             name: Living Room Blind 3
-          - entity: cover.living_room_blind_4
+          - entity: cover.living_room_blind_5
             name: Living Room Blind 4
 
   # ─── KITCHEN ─────────────────────────────────────────────────────────────────
@@ -116,9 +116,9 @@ views:
       - type: entities
         title: Blinds
         entities:
-          - entity: cover.kitchen_blind_1
+          - entity: cover.living_room_blind_4
             name: Kitchen Blind 1
-          - entity: cover.kitchen_blind_2
+          - entity: cover.blind_6
             name: Kitchen Blind 2
 
   # ─── BEDROOM ─────────────────────────────────────────────────────────────────
@@ -135,9 +135,9 @@ views:
       - type: entities
         title: Blinds
         entities:
-          - entity: cover.bedroom_blind_1
+          - entity: cover.rollo_schlafen_1
             name: Bedroom Blind 1
-          - entity: cover.bedroom_blind_2
+          - entity: cover.rollo_schlafen_2
             name: Bedroom Blind 2
 
   # ─── OFFICE ──────────────────────────────────────────────────────────────────
@@ -150,9 +150,9 @@ views:
         entities:
           - entity: cover.office_blind
             name: Office Blind
-          - entity: cover.office_blind_1
+          - entity: cover.blind_7
             name: Office Blind 1
-          - entity: cover.office_blind_2
+          - entity: cover.blind_8
             name: Office Blind 2
 
   # ─── KIDS ROOM & ROOM ────────────────────────────────────────────────────────
@@ -171,9 +171,9 @@ views:
       - type: entities
         title: Blinds
         entities:
-          - entity: cover.room_blind
+          - entity: cover.rollo_zimmer
             name: Room Blind
-          - entity: cover.kids_room_blind
+          - entity: cover.rollo_kind
             name: Kids Room Blind
 
   # ─── OUTSIDE & HALLWAYS ──────────────────────────────────────────────────────
@@ -239,9 +239,9 @@ views:
       - type: entities
         title: Blinds
         entities:
-          - entity: cover.bathroom_blind
+          - entity: cover.rollo_bad
             name: Bathroom Blind
-          - entity: cover.wc_blind
+          - entity: cover.rollo_wc
             name: WC Blind
 
   # ─── BASEMENT & UTILITY ──────────────────────────────────────────────────────
