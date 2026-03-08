@@ -18,6 +18,11 @@ input_boolean:
     icon: mdi:motion-sensor
     initial: true
 
+  bad_motion_control:
+    name: Bad Bewegungssteuerung
+    icon: mdi:motion-sensor
+    initial: true
+
 knx:
   binary_sensor:
     - name: "Sensor Bewegung EG"
