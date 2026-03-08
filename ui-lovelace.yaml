@@ -6,16 +6,6 @@ views:
     path: uebersicht
     cards:
       # Who is home
-      - type: custom:mushroom-chips-card
-        alignment: center
-        chips:
-          - type: entity
-            entity: person.kenan
-            icon_color: green
-          - type: entity
-            entity: person.almedina_cell
-            icon_color: pink
-
       - type: horizontal-stack
         cards:
           - type: tile
@@ -29,8 +19,8 @@ views:
       - type: glance
         title: Security
         entities:
-          - entity: binary_sensor.sensor_bewegung_eg
-            name: Motion
+          - entity: binary_sensor.doorbell
+            name: Motion EG
           - entity: binary_sensor.sensor_hausture
             name: Front Door
           - entity: switch.garagentor
