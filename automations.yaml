@@ -1,0 +1,81 @@
+# ─── KITCHEN COUNTER LIGHT - MOTION CONTROL ──────────────────────────────────
+# Split into two automations so HA restarts don't leave the light stuck on.
+# The OFF automation uses a `for:` duration trigger which is restart-safe.
+
+- id: kitchen_counter_motion_on
+  alias: "Kitchen Counter - Motion ON"
+  description: "Turn on counter light when motion is detected and toggle is enabled"
+  mode: single
+  triggers:
+    - platform: state
+      entity_id: binary_sensor.hue_motion_sensor_1_motion
+      to: "on"
+  conditions:
+    - condition: state
+      entity_id: input_boolean.kuche_motion_control
+      state: "on"
+  actions:
+    - action: light.turn_on
+      target:
+        entity_id: light.licht_kuche_steckdose
+
+- id: kitchen_counter_motion_off
+  alias: "Kitchen Counter - Motion OFF (5 min)"
+  description: "Turn off counter light after 5 min of no motion. Restart-safe."
+  mode: single
+  triggers:
+    - platform: state
+      entity_id: binary_sensor.hue_motion_sensor_1_motion
+      to: "off"
+      for: "00:05:00"
+  conditions:
+    - condition: state
+      entity_id: input_boolean.kuche_motion_control
+      state: "on"
+    - condition: state
+      entity_id: light.licht_kuche_steckdose
+      state: "on"
+  actions:
+    - action: light.turn_off
+      target:
+        entity_id: light.licht_kuche_steckdose
+
+# ─── BATHROOM LIGHTS - MOTION CONTROL ────────────────────────────────────────
+
+- id: bathroom_motion_on
+  alias: "Bathroom - Motion ON"
+  description: "Turn on bathroom lights when motion is detected and toggle is enabled"
+  mode: single
+  triggers:
+    - platform: state
+      entity_id: binary_sensor.hue_motion_sensor_2_motion
+      to: "on"
+  conditions:
+    - condition: state
+      entity_id: input_boolean.bad_motion_control
+      state: "on"
+  actions:
+    - action: light.turn_on
+      target:
+        entity_id: light.badezimmer
+
+- id: bathroom_motion_off
+  alias: "Bathroom - Motion OFF (10 min)"
+  description: "Turn off bathroom lights after 10 min of no motion. Restart-safe."
+  mode: single
+  triggers:
+    - platform: state
+      entity_id: binary_sensor.hue_motion_sensor_2_motion
+      to: "off"
+      for: "00:10:00"
+  conditions:
+    - condition: state
+      entity_id: input_boolean.bad_motion_control
+      state: "on"
+    - condition: state
+      entity_id: light.badezimmer
+      state: "on"
+  actions:
+    - action: light.turn_off
+      target:
+        entity_id: light.badezimmer
