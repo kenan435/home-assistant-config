@@ -54,14 +54,22 @@ views:
           - entity: sensor.temperature_buro
             name: Office
 
-      # Internet speed
+      # Internet & Router
       - type: glance
-        title: Internet
+        title: Internet & Router
         entities:
-          - entity: sensor.internetgatewaydevicev2_fritz_box_7590_ax_download_speed
+          - entity: sensor.fritz_box_7590_ax_download_throughput
             name: Download
-          - entity: sensor.internetgatewaydevicev2_fritz_box_7590_ax_upload_speed
+          - entity: sensor.fritz_box_7590_ax_upload_throughput
             name: Upload
+          - entity: sensor.fritz_box_7590_ax_external_ip
+            name: External IP
+          - entity: sensor.fritz_box_7590_ax_cpu_temperature
+            name: Router Temp
+          - entity: sensor.fritz_box_7590_ax_gb_received
+            name: GB In
+          - entity: sensor.fritz_box_7590_ax_gb_sent
+            name: GB Out
 
       # Raspberry Pi stats
       - type: glance
@@ -145,6 +153,9 @@ views:
           - entity: light.hue_color_spot_6
             name: Spot 6
 
+      - type: media-control
+        entity: media_player.living_room
+
       - type: entities
         title: Blinds
         entities:
@@ -178,6 +189,9 @@ views:
           - entity: light.licht_kuche_steckdose
             name: Kitchen Counter
 
+      - type: media-control
+        entity: media_player.kitchen
+
       - type: tile
         entity: input_boolean.kuche_motion_control
         name: Motion Control
@@ -203,6 +217,9 @@ views:
         entity: sensor.temperature_schlafzimmer
         name: Bedroom Temperature
         graph: line
+
+      - type: media-control
+        entity: media_player.bedroom_tv
 
       - type: entities
         title: Lights
@@ -325,6 +342,9 @@ views:
           - entity: light.badezimmer
             name: Bathroom
 
+      - type: media-control
+        entity: media_player.bathroom
+
       - type: tile
         entity: input_boolean.bad_motion_control
         name: Motion Control
@@ -337,6 +357,35 @@ views:
             name: Bathroom Blind
           - entity: cover.rollo_wc
             name: WC Blind
+
+  # ─── MEDIA ───────────────────────────────────────────────────────────────────
+  - title: Media
+    icon: mdi:music
+    path: media
+    cards:
+      - type: media-control
+        entity: media_player.living_room
+
+      - type: media-control
+        entity: media_player.kitchen
+
+      - type: media-control
+        entity: media_player.family_room
+
+      - type: media-control
+        entity: media_player.bathroom
+
+      - type: media-control
+        entity: media_player.wc
+
+      - type: media-control
+        entity: media_player.patio
+
+      - type: media-control
+        entity: media_player.denon_avr_x2400h
+
+      - type: media-control
+        entity: media_player.bedroom_tv
 
   # ─── BASEMENT & UTILITY ──────────────────────────────────────────────────────
   - title: Basement
