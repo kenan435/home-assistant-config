@@ -63,6 +63,10 @@ views:
     icon: mdi:sofa
     path: living-room
     cards:
+      - type: thermostat
+        entity: climate.heizung_wohnzimmer
+        name: Living Room Heating
+
       - type: entities
         title: Lights
         entities:
@@ -103,6 +107,10 @@ views:
     icon: mdi:countertop
     path: kitchen
     cards:
+      - type: thermostat
+        entity: climate.heizung_kuche
+        name: Kitchen Heating
+
       - type: entities
         title: Lights
         entities:
@@ -132,6 +140,10 @@ views:
     icon: mdi:bed
     path: bedroom
     cards:
+      - type: thermostat
+        entity: climate.heizung_schlafzimmer
+        name: Bedroom Heating
+
       - type: entities
         title: Lights
         entities:
@@ -154,6 +166,10 @@ views:
     icon: mdi:desk
     path: office
     cards:
+      - type: thermostat
+        entity: climate.heizung_buro
+        name: Office Heating
+
       - type: entities
         title: Blinds
         entities:
@@ -233,6 +249,10 @@ views:
     icon: mdi:shower
     path: bathroom
     cards:
+      - type: thermostat
+        entity: climate.heizung_bad
+        name: Bathroom Heating
+
       - type: entities
         title: Lights
         entities:

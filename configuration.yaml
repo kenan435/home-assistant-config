@@ -110,6 +110,83 @@ knx:
     - name: "Licht Terrasse"
       address: "1/1/14"
 
+  sensor:
+    - name: "Temperature Wohnzimmer"
+      state_address: "3/2/22"
+      type: temperature
+    - name: "Temperature Schlafzimmer"
+      state_address: "3/3/21"
+      type: temperature
+    - name: "Temperature Küche"
+      state_address: "3/2/41"
+      type: temperature
+    - name: "Temperature Bad"
+      state_address: "3/3/31"
+      type: temperature
+    - name: "Temperature WC"
+      state_address: "3/2/11"
+      type: temperature
+    - name: "Temperature Büro"
+      state_address: "3/2/31"
+      type: temperature
+    - name: "Temperature Kinderzimmer"
+      state_address: "3/3/41"
+      type: temperature
+    - name: "Temperature Zimmer"
+      state_address: "3/3/11"
+      type: temperature
+    - name: "Temperature Hobby"
+      state_address: "3/1/21"
+      type: temperature
+    - name: "Temperature Keller"
+      state_address: "3/1/31"
+      type: temperature
+    - name: "Temperature Heizungsraum"
+      state_address: "3/1/11"
+      type: temperature
+
+  climate:
+    - name: "Heizung Wohnzimmer"
+      target_temperature_address: "3/2/22"
+      target_temperature_state_address: "3/2/22"
+      min_temp: 15
+      max_temp: 28
+    - name: "Heizung Schlafzimmer"
+      target_temperature_address: "3/3/21"
+      target_temperature_state_address: "3/3/21"
+      min_temp: 15
+      max_temp: 28
+    - name: "Heizung Küche"
+      target_temperature_address: "3/2/41"
+      target_temperature_state_address: "3/2/41"
+      min_temp: 15
+      max_temp: 28
+    - name: "Heizung Bad"
+      target_temperature_address: "3/3/31"
+      target_temperature_state_address: "3/3/31"
+      min_temp: 15
+      max_temp: 28
+    - name: "Heizung WC"
+      target_temperature_address: "3/2/11"
+      target_temperature_state_address: "3/2/11"
+      min_temp: 15
+      max_temp: 28
+    - name: "Heizung Büro"
+      target_temperature_address: "3/2/31"
+      target_temperature_state_address: "3/2/31"
+      min_temp: 15
+      max_temp: 28
+    - name: "Heizung Kinderzimmer"
+      target_temperature_address: "3/3/41"
+      target_temperature_state_address: "3/3/41"
+      min_temp: 15
+      max_temp: 28
+    - name: "Heizung Zimmer"
+      target_temperature_address: "3/3/11"
+      target_temperature_state_address: "3/3/11"
+      min_temp: 15
+      max_temp: 28
+
   switch:
     - name: "Garagentor"
       address: "1/1/18"
