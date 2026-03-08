@@ -11,9 +11,11 @@ views:
           - type: tile
             entity: person.kenan
             name: Kenan
+            show_entity_picture: true
           - type: tile
-            entity: device_tracker.almedina_cell
+            entity: person.almedina
             name: Almedina
+            show_entity_picture: true
 
       # Security & Sensors
       - type: glance
