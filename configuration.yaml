@@ -2,7 +2,14 @@
 default_config:
 
 lovelace:
-  mode: yaml
+  resource_mode: yaml
+  dashboards:
+    lovelace:
+      mode: yaml
+      filename: ui-lovelace.yaml
+      title: Smart Home
+      icon: mdi:view-dashboard
+      show_in_sidebar: true
 
 # Load frontend themes from the themes folder
 frontend:
