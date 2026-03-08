@@ -23,7 +23,7 @@ views:
         forecast_type: daily
 
       - type: iframe
-        url: https://embed.windy.com/embed2.html?lat=48.2&lon=16.4&detailLat=48.2&detailLon=16.4&width=650&height=450&zoom=7&level=surface&overlay=rain&product=ecmwf&menu=&message=true&marker=true&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=km%2Fh&metricTemp=%C2%B0C&radarRange=-1
+        url: https://embed.windy.com/embed2.html?lat=48.22&lon=11.47&detailLat=48.22&detailLon=11.47&width=650&height=450&zoom=8&level=surface&overlay=rain&product=ecmwf&menu=&message=true&marker=true&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=km%2Fh&metricTemp=%C2%B0C&radarRange=-1
         aspect_ratio: 75%
 
       # Security & Sensors
