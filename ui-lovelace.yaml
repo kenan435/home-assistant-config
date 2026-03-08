@@ -63,9 +63,10 @@ views:
     icon: mdi:sofa
     path: living-room
     cards:
-      - type: thermostat
-        entity: climate.heizung_wohnzimmer
-        name: Living Room Heating
+      - type: sensor
+        entity: sensor.temperature_wohnzimmer
+        name: Living Room Temperature
+        graph: line
 
       - type: entities
         title: Lights
@@ -107,9 +108,10 @@ views:
     icon: mdi:countertop
     path: kitchen
     cards:
-      - type: thermostat
-        entity: climate.heizung_kuche
-        name: Kitchen Heating
+      - type: sensor
+        entity: sensor.temperature_kuche
+        name: Kitchen Temperature
+        graph: line
 
       - type: entities
         title: Lights
@@ -140,9 +142,10 @@ views:
     icon: mdi:bed
     path: bedroom
     cards:
-      - type: thermostat
-        entity: climate.heizung_schlafzimmer
-        name: Bedroom Heating
+      - type: sensor
+        entity: sensor.temperature_schlafzimmer
+        name: Bedroom Temperature
+        graph: line
 
       - type: entities
         title: Lights
@@ -166,9 +169,10 @@ views:
     icon: mdi:desk
     path: office
     cards:
-      - type: thermostat
-        entity: climate.heizung_buro
-        name: Office Heating
+      - type: sensor
+        entity: sensor.temperature_buro
+        name: Office Temperature
+        graph: line
 
       - type: entities
         title: Blinds
@@ -249,9 +253,10 @@ views:
     icon: mdi:shower
     path: bathroom
     cards:
-      - type: thermostat
-        entity: climate.heizung_bad
-        name: Bathroom Heating
+      - type: sensor
+        entity: sensor.temperature_bad
+        name: Bathroom Temperature
+        graph: line
 
       - type: entities
         title: Lights
