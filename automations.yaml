@@ -62,26 +62,22 @@
           - light.licht_treppe_wand
 
 # ─── DOORBELL NOTIFICATION ───────────────────────────────────────────────────
-# Polls Loxone Intercom GPIO state. Fires when I/O port value changes (doorbell press).
-# The raw value from /dev/gpio is stored in sensor.loxone_intercom_gpio.
-# Adjust the trigger value_template once we know the exact response format.
+# Uses the KNX front door sensor (binary_sensor.sensor_hausture, address 2/2/118).
+# When the doorbell button is pressed, this sensor briefly pulses to "on".
 
 - id: doorbell_notification
   alias: "Doorbell - Push Notification"
-  description: "Send push notification when doorbell is pressed (Loxone I/O port)"
+  description: "Send push notification when front door sensor triggers (doorbell press)"
   mode: single
   triggers:
     - platform: state
-      entity_id: sensor.loxone_intercom_gpio
-  conditions:
-    - condition: template
-      value_template: >
-        {{ trigger.to_state.state != trigger.from_state.state
-           and trigger.to_state.state not in ['unavailable', 'unknown'] }}
+      entity_id: binary_sensor.sensor_hausture
+      to: "on"
+  conditions: []
   actions:
     - action: notify.mobile_app_kenans_iphone
       data:
-        title: "Doorbell"
+        title: "🔔 Doorbell"
         message: "Someone is at the front door!"
         data:
           push:

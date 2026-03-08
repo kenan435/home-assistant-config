@@ -19,26 +19,6 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
-# ─── LOXONE INTERCOM ─────────────────────────────────────────────────────────
-rest:
-  # Try the public API endpoint (no auth) that the Fernsteuerung web page uses
-  - resource: "http://192.168.136.99/api/state"
-    scan_interval: 5
-    sensor:
-      - name: "Loxone Intercom State"
-        unique_id: loxone_intercom_state_raw
-        value_template: "{{ value[:255] }}"
-
-  # Try GPIO with admin-level credentials
-  - resource: "http://192.168.136.99/dev/gpio"
-    username: homeassistant
-    password: loxone2024
-    authentication: basic
-    scan_interval: 5
-    sensor:
-      - name: "Loxone Intercom GPIO"
-        unique_id: loxone_intercom_gpio_raw
-        value_template: "{{ value[:255] }}"
 
 cover:
   - platform: group
