@@ -54,6 +54,16 @@ views:
             name: PM10
             icon: mdi:air-filter
 
+      - type: history-graph
+        title: Air Quality Today
+        hours_to_show: 24
+        logarithmic_scale: false
+        entities:
+          - entity: sensor.sensor_44750_pm2_5
+            name: PM2.5
+          - entity: sensor.sensor_44750_pm10
+            name: PM10
+
       # Security & Sensors
       - type: glance
         title: Security
