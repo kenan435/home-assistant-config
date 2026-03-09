@@ -47,6 +47,12 @@ views:
           - entity: sensor.sensor_44750_pm10
             name: PM10
 
+      # WiFi QR Code for guests
+      - type: picture
+        image: /media/local/wifi-qr.png
+        alt_text: Scan to connect to WiFi (ssis)
+        title: Guest WiFi
+
       # Security & Sensors
       - type: glance
         title: Security
