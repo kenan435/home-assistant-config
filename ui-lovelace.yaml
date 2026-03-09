@@ -50,7 +50,7 @@ views:
       # WiFi QR Code for guests
       - type: picture
         image: /media/local/wifi-qr.png
-        alt_text: Scan to connect to WiFi (ssis)
+        alt_text: Scan to connect to guest WiFi (Loading...)
         title: Guest WiFi
 
       # Security & Sensors
