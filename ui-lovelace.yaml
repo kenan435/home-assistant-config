@@ -5,110 +5,39 @@ views:
     icon: mdi:home
     path: uebersicht
     cards:
-      # ── iPad 3-column layout ──────────────────────────────────────────────────
+      # Row 1: Who is home + weather side by side
       - type: horizontal-stack
         cards:
-
-          # ── LEFT COLUMN ──────────────────────────────────────────────────────
           - type: vertical-stack
             cards:
-              - type: horizontal-stack
-                cards:
-                  - type: vertical-stack
-                    cards:
-                      - type: tile
-                        entity: person.kenan
-                        name: Kenan
-                        show_entity_picture: true
-                      - type: tile
-                        entity: sensor.kenans_iphone_battery_level
-                        name: iPhone
-                        icon: mdi:battery
-                  - type: vertical-stack
-                    cards:
-                      - type: tile
-                        entity: person.almedina
-                        name: Almedina
-                        show_entity_picture: true
-                      - type: tile
-                        entity: sensor.almedina_cell_battery_level
-                        name: Phone
-                        icon: mdi:battery
-
-              - type: weather-forecast
-                entity: weather.forecast_home
-                forecast_type: daily
-
-              - type: horizontal-stack
-                cards:
-                  - type: tile
-                    entity: switch.garagentor
-                    name: Garage Door
-                    icon: mdi:garage
-                  - type: tile
-                    entity: switch.schalten_terrasse
-                    name: Terrace
-                    icon: mdi:patio-heater
-
-              - type: glance
-                title: Temperatures
-                entities:
-                  - entity: sensor.temperature_wohnzimmer
-                    name: Living R.
-                  - entity: sensor.temperature_schlafzimmer
-                    name: Bedroom
-                  - entity: sensor.temperature_kuche
-                    name: Kitchen
-                  - entity: sensor.temperature_bad
-                    name: Bathroom
-                  - entity: sensor.temperature_buro
-                    name: Office
-
-              - type: markdown
-                content: >
-                  <div style="text-align:center;padding:8px">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=WIFI:S:Loading...;T:WPA;P:mi%20smo%20zeljini;;" width="160" style="border-radius:8px"/>
-                    <p style="margin:6px 0 0;font-size:0.85em;opacity:0.7">📶 Guest WiFi · <b>Loading...</b></p>
-                  </div>
-
-          # ── MIDDLE COLUMN ────────────────────────────────────────────────────
+              - type: tile
+                entity: person.kenan
+                name: Kenan
+                show_entity_picture: true
+              - type: tile
+                entity: sensor.kenans_iphone_battery_level
+                name: iPhone
+                icon: mdi:battery
           - type: vertical-stack
             cards:
-              - type: iframe
-                url: https://embed.windy.com/embed2.html?lat=48.22&lon=11.47&detailLat=48.22&detailLon=11.47&width=650&height=450&zoom=8&level=surface&overlay=rain&product=ecmwf&menu=&message=true&marker=true&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=km%2Fh&metricTemp=%C2%B0C&radarRange=-1
-                aspect_ratio: 75%
+              - type: tile
+                entity: person.almedina
+                name: Almedina
+                show_entity_picture: true
+              - type: tile
+                entity: sensor.almedina_cell_battery_level
+                name: Phone
+                icon: mdi:battery
+          - type: weather-forecast
+            entity: weather.forecast_home
+            forecast_type: daily
 
-              - type: glance
-                title: Commute to Work
-                entities:
-                  - entity: sensor.kenan_to_work
-                    name: Kenan
-                    icon: mdi:car
-                  - entity: sensor.almedina_to_work
-                    name: Almedina
-                    icon: mdi:car
-
-              - type: entities
-                title: Blinds
-                entities:
-                  - entity: cover.living_room_blinds
-                    name: Living Room
-                  - entity: cover.kitchen_blinds
-                    name: Kitchen
-                  - entity: cover.office_blinds
-                    name: Office
-                  - entity: cover.bedroom_blinds
-                    name: Bedroom
-                  - entity: cover.rollo_bad
-                    name: Bathroom
-                  - entity: cover.rollo_wc
-                    name: WC
-                  - entity: cover.rollo_zimmer
-                    name: Room
-                  - entity: cover.rollo_kind
-                    name: Kids Room
-
-          # ── RIGHT COLUMN ─────────────────────────────────────────────────────
+      # Row 2: Radar map + Security + Air Quality
+      - type: horizontal-stack
+        cards:
+          - type: iframe
+            url: https://embed.windy.com/embed2.html?lat=48.22&lon=11.47&detailLat=48.22&detailLon=11.47&width=650&height=450&zoom=8&level=surface&overlay=rain&product=ecmwf&menu=&message=true&marker=true&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=km%2Fh&metricTemp=%C2%B0C&radarRange=-1
+            aspect_ratio: 75%
           - type: vertical-stack
             cards:
               - type: glance
@@ -126,11 +55,34 @@ views:
                   - entity: sensor.last_doorbell_ring
                     name: Last Ring
                     icon: mdi:doorbell
+              - type: history-graph
+                title: Air Quality Today
+                hours_to_show: 24
+                logarithmic_scale: false
+                entities:
+                  - entity: sensor.sensor_44750_pm2_5
+                    name: PM2.5
+                  - entity: sensor.sensor_44750_pm10
+                    name: PM10
+              - type: glance
+                title: Commute to Work
+                entities:
+                  - entity: sensor.kenan_to_work
+                    name: Kenan
+                    icon: mdi:car
+                  - entity: sensor.almedina_to_work
+                    name: Almedina
+                    icon: mdi:car
 
+      # Row 3: Cameras + Blinds
+      - type: horizontal-stack
+        cards:
+          - type: vertical-stack
+            cards:
               - type: picture-glance
                 title: Front Door
                 camera_image: camera.front_door
-                aspect_ratio: 55%
+                aspect_ratio: 50%
                 entities:
                   - entity: sensor.blink_front_door_temperature
                     name: Temp
@@ -141,13 +93,12 @@ views:
                     entity_id: camera.front_door
                 hold_action:
                   action: more-info
-
               - type: horizontal-stack
                 cards:
                   - type: picture-glance
                     title: Entrance
                     camera_image: camera.entrance
-                    aspect_ratio: 75%
+                    aspect_ratio: 70%
                     entities:
                       - entity: sensor.blink_entrance_temperature
                         name: Temp
@@ -161,7 +112,7 @@ views:
                   - type: picture-glance
                     title: Garden
                     camera_image: camera.garden
-                    aspect_ratio: 75%
+                    aspect_ratio: 70%
                     entities:
                       - entity: sensor.blink_garden_temperature
                         name: Temp
@@ -172,33 +123,69 @@ views:
                         entity_id: camera.garden
                     hold_action:
                       action: more-info
+          - type: entities
+            title: Blinds
+            entities:
+              - entity: cover.living_room_blinds
+                name: Living Room
+              - entity: cover.kitchen_blinds
+                name: Kitchen
+              - entity: cover.office_blinds
+                name: Office
+              - entity: cover.bedroom_blinds
+                name: Bedroom
+              - entity: cover.rollo_bad
+                name: Bathroom
+              - entity: cover.rollo_wc
+                name: WC
+              - entity: cover.rollo_zimmer
+                name: Room
+              - entity: cover.rollo_kind
+                name: Kids Room
 
-              - type: history-graph
-                title: Air Quality Today
-                hours_to_show: 24
-                logarithmic_scale: false
-                entities:
-                  - entity: sensor.sensor_44750_pm2_5
-                    name: PM2.5
-                  - entity: sensor.sensor_44750_pm10
-                    name: PM10
-
+      # Row 4: Temperatures + Quick controls + Internet + Pi + QR
+      - type: horizontal-stack
+        cards:
+          - type: glance
+            title: Temperatures
+            entities:
+              - entity: sensor.temperature_wohnzimmer
+                name: Living R.
+              - entity: sensor.temperature_schlafzimmer
+                name: Bedroom
+              - entity: sensor.temperature_kuche
+                name: Kitchen
+              - entity: sensor.temperature_bad
+                name: Bathroom
+              - entity: sensor.temperature_buro
+                name: Office
+          - type: vertical-stack
+            cards:
+              - type: horizontal-stack
+                cards:
+                  - type: tile
+                    entity: switch.garagentor
+                    name: Garage
+                    icon: mdi:garage
+                  - type: tile
+                    entity: switch.schalten_terrasse
+                    name: Terrace
+                    icon: mdi:patio-heater
               - type: glance
                 title: Internet & Router
                 entities:
                   - entity: sensor.fritz_box_7590_ax_download_throughput
-                    name: Download
+                    name: Down
                   - entity: sensor.fritz_box_7590_ax_upload_throughput
-                    name: Upload
+                    name: Up
                   - entity: sensor.fritz_box_7590_ax_external_ip
-                    name: External IP
+                    name: IP
                   - entity: sensor.fritz_box_7590_ax_cpu_temperature
-                    name: Router Temp
+                    name: Temp
                   - entity: sensor.fritz_box_7590_ax_gb_received
                     name: GB In
                   - entity: sensor.fritz_box_7590_ax_gb_sent
                     name: GB Out
-
               - type: glance
                 title: Raspberry Pi
                 entities:
@@ -211,7 +198,13 @@ views:
                   - entity: sensor.system_monitor_processor_temperature
                     name: Temp
                   - entity: sensor.system_monitor_last_boot
-                    name: Last Boot
+                    name: Boot
+          - type: markdown
+            content: >
+              <div style="text-align:center;padding:12px">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=WIFI:S:Loading...;T:WPA;P:mi%20smo%20zeljini;;" width="160" style="border-radius:8px"/>
+                <p style="margin:8px 0 0;font-size:0.85em;opacity:0.7">📶 Guest WiFi · <b>Loading...</b></p>
+              </div>
 
   # ─── LIVING ROOM ─────────────────────────────────────────────────────────────
   - title: Living Room
