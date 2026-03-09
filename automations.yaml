@@ -84,6 +84,52 @@
             sound: default
           tag: doorbell
 
+# ─── BLINK AUTO-ARM WHEN NOBODY HOME ────────────────────────────────────────
+# Arms Blink when both Kenan and Almedina leave during the day.
+# Blink's own schedule handles 21:00–06:00 — this covers the gaps.
+
+- id: blink_arm_when_away
+  alias: "Blink - Arm when everyone leaves"
+  mode: single
+  triggers:
+    - platform: state
+      entity_id:
+        - person.kenan
+        - person.almedina
+      to: "not_home"
+  conditions:
+    - condition: state
+      entity_id: person.kenan
+      state: "not_home"
+    - condition: state
+      entity_id: person.almedina
+      state: "not_home"
+    - condition: state
+      entity_id: alarm_control_panel.blink_home
+      state: "disarmed"
+  actions:
+    - action: alarm_control_panel.alarm_arm_away
+      target:
+        entity_id: alarm_control_panel.blink_home
+
+- id: blink_disarm_when_home
+  alias: "Blink - Disarm when someone arrives"
+  mode: single
+  triggers:
+    - platform: state
+      entity_id:
+        - person.kenan
+        - person.almedina
+      to: "home"
+  conditions:
+    - condition: state
+      entity_id: alarm_control_panel.blink_home
+      state: "armed_away"
+  actions:
+    - action: alarm_control_panel.alarm_disarm
+      target:
+        entity_id: alarm_control_panel.blink_home
+
 # ─── BATHROOM LIGHTS - MOTION CONTROL ────────────────────────────────────────
 
 - id: bathroom_motion_on
