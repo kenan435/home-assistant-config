@@ -75,7 +75,7 @@ views:
                 name: Temp
             tap_action:
               action: call-service
-              service: blink.snap_camera
+              service: blink.trigger_camera
               target:
                 entity_id: camera.front_door
             hold_action:
@@ -88,7 +88,7 @@ views:
                 name: Temp
             tap_action:
               action: call-service
-              service: blink.snap_camera
+              service: blink.trigger_camera
               target:
                 entity_id: camera.entrance
             hold_action:
@@ -101,7 +101,7 @@ views:
                 name: Temp
             tap_action:
               action: call-service
-              service: blink.snap_camera
+              service: blink.trigger_camera
               target:
                 entity_id: camera.garden
             hold_action:
