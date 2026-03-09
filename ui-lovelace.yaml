@@ -5,7 +5,7 @@ views:
     icon: mdi:home
     path: uebersicht
     cards:
-      # Who is home
+      # Who is home + phone batteries
       - type: horizontal-stack
         cards:
           - type: tile
@@ -16,6 +16,14 @@ views:
             entity: person.almedina
             name: Almedina
             show_entity_picture: true
+          - type: tile
+            entity: sensor.kenans_iphone_battery_level
+            name: Kenan's iPhone
+            icon: mdi:battery
+          - type: tile
+            entity: sensor.almedina_cell_battery_level
+            name: Almedina's Phone
+            icon: mdi:battery
 
       # Weather
       - type: weather-forecast
