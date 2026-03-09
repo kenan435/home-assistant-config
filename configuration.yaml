@@ -43,6 +43,12 @@ light:
     name: "Bathroom Lights"
     entities:
       - light.badezimmer
+      - light.hue_color_spot_1
+      - light.hue_color_spot_2
+      - light.hue_color_spot_3
+      - light.hue_color_spot_4
+      - light.hue_color_spot_5
+      - light.hue_color_spot_6
 
   - platform: group
     name: "Hallway Lights"
