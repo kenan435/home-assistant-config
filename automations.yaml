@@ -54,12 +54,12 @@
     - action: light.turn_off
       target:
         entity_id:
-          - light.licht_keller
-          - light.licht_ug_flur
-          - light.licht_hobby
-          - light.licht_heizungsraum
-          - light.licht_heizung
-          - light.licht_treppe_wand
+                  - light.basement_light
+                  - light.basement_hallway_light
+                  - light.hobby_room_light
+                  - light.boiler_room_light
+                  - light.heating_room_light
+                  - light.basement_stairway_light
 
 # ─── DOORBELL NOTIFICATION ───────────────────────────────────────────────────
 # Uses the KNX front door sensor (binary_sensor.sensor_hausture, address 2/2/118).
