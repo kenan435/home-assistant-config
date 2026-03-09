@@ -47,12 +47,6 @@ views:
           - entity: sensor.sensor_44750_pm10
             name: PM10
 
-      # WiFi QR Code for guests
-      - type: picture
-        image: /local/wifi-qr.png
-        alt_text: Scan to connect to guest WiFi (Loading...)
-        title: Guest WiFi
-
       # Security & Sensors
       - type: glance
         title: Security
@@ -70,7 +64,7 @@ views:
             name: Last Ring
             icon: mdi:doorbell
 
-      # Blink cameras
+      # Blink cameras — all three in one row
       - type: horizontal-stack
         cards:
           - type: picture-glance
@@ -85,13 +79,18 @@ views:
             entities:
               - entity: sensor.blink_entrance_temperature
                 name: Temp
+          - type: picture-glance
+            title: Garden
+            camera_image: camera.garden
+            entities:
+              - entity: sensor.blink_garden_temperature
+                name: Temp
 
-      - type: picture-glance
-        title: Garden
-        camera_image: camera.garden
-        entities:
-          - entity: sensor.blink_garden_temperature
-            name: Temp
+      # WiFi QR Code for guests
+      - type: picture
+        image: /media/local/wifi-qr.png
+        alt_text: Guest WiFi — Loading...
+        title: Guest WiFi
 
       # Quick controls
       - type: horizontal-stack

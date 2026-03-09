@@ -20,7 +20,7 @@ script: !include scripts.yaml
 scene: !include scenes.yaml
 
 shell_command:
-  copy_wifi_qr: "cp /media/local/wifi-qr.png /config/www/wifi-qr.png"
+  copy_wifi_qr: "mkdir -p /config/www && find /media /config/media -name 'wifi-qr.png' 2>/dev/null | head -1 | xargs -I{} cp {} /config/www/wifi-qr.png"
 
 # ─── LIGHT GROUPS (visible to Alexa as single devices) ───────────────────────
 light:
