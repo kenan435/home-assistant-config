@@ -112,9 +112,12 @@ views:
               action: more-info
 
       # WiFi QR Code for guests
-      - type: picture
-        image: https://api.qrserver.com/v1/create-qr-code/?size=400x400&data=WIFI:S:Loading...;T:WPA;P:mi%20smo%20zeljini;;
-        title: Guest WiFi — scan to connect (Loading...)
+      - type: markdown
+        content: >
+          <div style="text-align:center;padding:8px">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=WIFI:S:Loading...;T:WPA;P:mi%20smo%20zeljini;;" width="180" style="border-radius:8px"/>
+            <p style="margin:6px 0 0;font-size:0.85em;opacity:0.7">📶 Guest WiFi · <b>Loading...</b> · scan to connect</p>
+          </div>
 
       # Quick controls
       - type: horizontal-stack
