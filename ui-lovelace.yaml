@@ -64,7 +64,7 @@ views:
             name: Last Ring
             icon: mdi:doorbell
 
-      # Blink cameras — all three in one row
+      # Blink cameras — tap to snap, hold to view
       - type: horizontal-stack
         cards:
           - type: picture-glance
@@ -73,18 +73,39 @@ views:
             entities:
               - entity: sensor.blink_front_door_temperature
                 name: Temp
+            tap_action:
+              action: call-service
+              service: blink.snap_camera
+              target:
+                entity_id: camera.front_door
+            hold_action:
+              action: more-info
           - type: picture-glance
             title: Entrance
             camera_image: camera.entrance
             entities:
               - entity: sensor.blink_entrance_temperature
                 name: Temp
+            tap_action:
+              action: call-service
+              service: blink.snap_camera
+              target:
+                entity_id: camera.entrance
+            hold_action:
+              action: more-info
           - type: picture-glance
             title: Garden
             camera_image: camera.garden
             entities:
               - entity: sensor.blink_garden_temperature
                 name: Temp
+            tap_action:
+              action: call-service
+              service: blink.snap_camera
+              target:
+                entity_id: camera.garden
+            hold_action:
+              action: more-info
 
       # WiFi QR Code for guests
       - type: picture
