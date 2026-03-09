@@ -8,22 +8,26 @@ views:
       # Who is home + phone batteries
       - type: horizontal-stack
         cards:
-          - type: tile
-            entity: person.kenan
-            name: Kenan
-            show_entity_picture: true
-          - type: tile
-            entity: person.almedina
-            name: Almedina
-            show_entity_picture: true
-          - type: tile
-            entity: sensor.kenans_iphone_battery_level
-            name: Kenan's iPhone
-            icon: mdi:battery
-          - type: tile
-            entity: sensor.almedina_cell_battery_level
-            name: Almedina's Phone
-            icon: mdi:battery
+          - type: vertical-stack
+            cards:
+              - type: tile
+                entity: person.kenan
+                name: Kenan
+                show_entity_picture: true
+              - type: tile
+                entity: sensor.kenans_iphone_battery_level
+                name: iPhone
+                icon: mdi:battery
+          - type: vertical-stack
+            cards:
+              - type: tile
+                entity: person.almedina
+                name: Almedina
+                show_entity_picture: true
+              - type: tile
+                entity: sensor.almedina_cell_battery_level
+                name: Phone
+                icon: mdi:battery
 
       # Weather
       - type: weather-forecast
