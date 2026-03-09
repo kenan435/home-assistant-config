@@ -65,26 +65,27 @@ views:
             icon: mdi:doorbell
 
       # Blink cameras — tap to snap, hold for full view
+      - type: picture-glance
+        title: Front Door
+        camera_image: camera.front_door
+        aspect_ratio: 45%
+        entities:
+          - entity: sensor.blink_front_door_temperature
+            name: Temp
+        tap_action:
+          action: call-service
+          service: blink.trigger_camera
+          target:
+            entity_id: camera.front_door
+        hold_action:
+          action: more-info
+
       - type: horizontal-stack
         cards:
           - type: picture-glance
-            title: Front Door
-            camera_image: camera.front_door
-            aspect_ratio: 60%
-            entities:
-              - entity: sensor.blink_front_door_temperature
-                name: Temp
-            tap_action:
-              action: call-service
-              service: blink.trigger_camera
-              target:
-                entity_id: camera.front_door
-            hold_action:
-              action: more-info
-          - type: picture-glance
             title: Entrance
             camera_image: camera.entrance
-            aspect_ratio: 60%
+            aspect_ratio: 70%
             entities:
               - entity: sensor.blink_entrance_temperature
                 name: Temp
@@ -95,21 +96,20 @@ views:
                 entity_id: camera.entrance
             hold_action:
               action: more-info
-
-      - type: picture-glance
-        title: Garden
-        camera_image: camera.garden
-        aspect_ratio: 40%
-        entities:
-          - entity: sensor.blink_garden_temperature
-            name: Temp
-        tap_action:
-          action: call-service
-          service: blink.trigger_camera
-          target:
-            entity_id: camera.garden
-        hold_action:
-          action: more-info
+          - type: picture-glance
+            title: Garden
+            camera_image: camera.garden
+            aspect_ratio: 70%
+            entities:
+              - entity: sensor.blink_garden_temperature
+                name: Temp
+            tap_action:
+              action: call-service
+              service: blink.trigger_camera
+              target:
+                entity_id: camera.garden
+            hold_action:
+              action: more-info
 
       # WiFi QR Code for guests
       - type: picture
