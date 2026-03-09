@@ -51,18 +51,41 @@ views:
       - type: glance
         title: Security
         entities:
-          - entity: binary_sensor.doorbell
-            name: Front Door Motion
-            icon: mdi:motion-sensor
           - entity: binary_sensor.sensor_hausture
-            name: Door Contact
+            name: Front Door
             icon: mdi:door
           - entity: switch.garagentor
             name: Garage
             icon: mdi:garage
+          - entity: alarm_control_panel.blink_home
+            name: Blink
+            icon: mdi:shield-home
           - entity: sensor.last_doorbell_ring
             name: Last Ring
             icon: mdi:doorbell
+
+      # Blink cameras
+      - type: horizontal-stack
+        cards:
+          - type: picture-glance
+            title: Front Door
+            camera_image: camera.front_door
+            entities:
+              - entity: sensor.blink_front_door_temperature
+                name: Temp
+          - type: picture-glance
+            title: Entrance
+            camera_image: camera.entrance
+            entities:
+              - entity: sensor.blink_entrance_temperature
+                name: Temp
+
+      - type: picture-glance
+        title: Garden
+        camera_image: camera.garden
+        entities:
+          - entity: sensor.blink_garden_temperature
+            name: Temp
 
       # Quick controls
       - type: horizontal-stack
