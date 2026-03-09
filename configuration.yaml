@@ -19,6 +19,54 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
+# ─── LIGHT GROUPS (visible to Alexa as single devices) ───────────────────────
+light:
+  - platform: group
+    name: "Living Room Lights"
+    entities:
+      - light.licht_wohnen
+      - light.licht_essen
+      - light.floor_lamp_2
+
+  - platform: group
+    name: "Kitchen Lights"
+    entities:
+      - light.licht_kuche
+      - light.licht_kuche_steckdose
+
+  - platform: group
+    name: "Bedroom Lights"
+    entities:
+      - light.licht_schlafen
+
+  - platform: group
+    name: "Bathroom Lights"
+    entities:
+      - light.badezimmer
+
+  - platform: group
+    name: "Hallway Lights"
+    entities:
+      - light.licht_flur_eg
+      - light.licht_treppe_eg_wand
+      - light.licht_flur_og
+
+  - platform: group
+    name: "Basement Lights"
+    entities:
+      - light.licht_keller
+      - light.licht_ug_flur
+      - light.licht_hobby
+      - light.licht_heizungsraum
+      - light.licht_heizung
+      - light.licht_treppe_wand
+
+  - platform: group
+    name: "Outside Lights"
+    entities:
+      - light.licht_hausture
+      - light.licht_terrasse
+
 template:
   - sensor:
       - name: "Last Doorbell Ring"
