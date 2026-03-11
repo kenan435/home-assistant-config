@@ -228,6 +228,44 @@ knx:
     - name: "Front Door Unlock"
       address: "1/0/56"
 
+  # Heating (from KNX Heizung group addresses)
+  climate:
+    - name: "Living Room Heating"
+      temperature_address: "3/2/20"
+      target_temperature_address: "3/2/22"
+      target_temperature_state_address: "3/2/24"
+      operation_mode_state_address: "3/2/25"
+      min_temp: 5
+      max_temp: 30
+    - name: "Bedroom Heating"
+      temperature_address: "3/3/20"
+      target_temperature_address: "3/3/21"
+      target_temperature_state_address: "3/3/23"
+      operation_mode_state_address: "3/3/24"
+      min_temp: 5
+      max_temp: 30
+    - name: "Bathroom Heating"
+      temperature_address: "3/3/30"
+      target_temperature_address: "3/3/31"
+      target_temperature_state_address: "3/3/33"
+      operation_mode_state_address: "3/3/34"
+      min_temp: 5
+      max_temp: 30
+    - name: "Office Heating"
+      temperature_address: "3/2/30"
+      target_temperature_address: "3/2/31"
+      target_temperature_state_address: "3/2/33"
+      operation_mode_state_address: "3/2/34"
+      min_temp: 5
+      max_temp: 30
+    - name: "Kids Room Heating"
+      temperature_address: "3/3/40"
+      target_temperature_address: "3/3/41"
+      target_temperature_state_address: "3/3/43"
+      operation_mode_state_address: "3/3/44"
+      min_temp: 5
+      max_temp: 30
+
   cover:
     - name: "WC Blind"
       move_long_address: "2/2/10"

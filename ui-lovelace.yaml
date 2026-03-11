@@ -169,6 +169,21 @@ views:
           - entity: sensor.temperature_buro
             name: Office
 
+      # Heating (KNX thermostats)
+      - type: entities
+        title: Heating
+        entities:
+          - entity: climate.living_room_heating
+            name: Living Room
+          - entity: climate.bedroom_heating
+            name: Bedroom
+          - entity: climate.bathroom_heating
+            name: Bathroom
+          - entity: climate.office_heating
+            name: Office
+          - entity: climate.kids_room_heating
+            name: Kids Room
+
       # Internet & Router
       - type: glance
         title: Internet & Router
@@ -220,6 +235,25 @@ views:
           - entity: cover.rollo_zimmer
             name: Room
           - entity: cover.rollo_kind
+            name: Kids Room
+
+  # ─── HEATING ─────────────────────────────────────────────────────────────────
+  - title: Heating
+    icon: mdi:radiator
+    path: heating
+    cards:
+      - type: entities
+        title: Thermostats
+        entities:
+          - entity: climate.living_room_heating
+            name: Living Room
+          - entity: climate.bedroom_heating
+            name: Bedroom
+          - entity: climate.bathroom_heating
+            name: Bathroom
+          - entity: climate.office_heating
+            name: Office
+          - entity: climate.kids_room_heating
             name: Kids Room
 
   # ─── LIVING ROOM ─────────────────────────────────────────────────────────────
