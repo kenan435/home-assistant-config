@@ -129,6 +129,57 @@ input_boolean:
     icon: mdi:motion-sensor
     initial: true
 
+# Day setpoint stored per room for heating night setback (21:00 → -3°, 5:00 → restore)
+input_number:
+  living_room_day_setpoint:
+    name: Living Room day setpoint
+    min: 5
+    max: 30
+    step: 0.5
+    initial: 21
+    unit_of_measurement: "°C"
+    mode: box
+  office_day_setpoint:
+    name: Office day setpoint
+    min: 5
+    max: 30
+    step: 0.5
+    initial: 21
+    unit_of_measurement: "°C"
+    mode: box
+  bedroom_day_setpoint:
+    name: Bedroom day setpoint
+    min: 5
+    max: 30
+    step: 0.5
+    initial: 21
+    unit_of_measurement: "°C"
+    mode: box
+  room_day_setpoint:
+    name: Room day setpoint
+    min: 5
+    max: 30
+    step: 0.5
+    initial: 21
+    unit_of_measurement: "°C"
+    mode: box
+  kids_room_day_setpoint:
+    name: Kids Room day setpoint
+    min: 5
+    max: 30
+    step: 0.5
+    initial: 21
+    unit_of_measurement: "°C"
+    mode: box
+  bathroom_day_setpoint:
+    name: Bathroom day setpoint
+    min: 5
+    max: 30
+    step: 0.5
+    initial: 21
+    unit_of_measurement: "°C"
+    mode: box
+
 knx:
   binary_sensor:
     - name: "Sensor Bewegung EG"
@@ -263,6 +314,13 @@ knx:
       target_temperature_address: "3/3/41"
       target_temperature_state_address: "3/3/43"
       operation_mode_state_address: "3/3/44"
+      min_temp: 5
+      max_temp: 30
+    - name: "Room Heating"
+      temperature_address: "3/3/10"
+      target_temperature_address: "3/3/11"
+      target_temperature_state_address: "3/3/13"
+      operation_mode_state_address: "3/3/14"
       min_temp: 5
       max_temp: 30
 
