@@ -64,8 +64,11 @@ views:
         title: Security
         entities:
           - entity: binary_sensor.sensor_hausture
-            name: Front Door
+            name: Door Contact
             icon: mdi:door
+          - entity: lock.front_door_lock
+            name: Unlock
+            icon: mdi:lock-open
           - entity: switch.garagentor
             name: Garage
             icon: mdi:garage

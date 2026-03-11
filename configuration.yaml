@@ -172,12 +172,12 @@ knx:
       address: "1/0/44"
     - name: "Upstairs Hallway Light"
       address: "1/0/54"
-    - name: "Front Door Light"
-      address: "1/0/56"
     - name: "Kitchen Counter Light"
       address: "1/0/58"
     - name: "Bedroom Light"
       address: "1/0/70"
+    - name: "Entrance Light"
+      address: "1/1/12"
     - name: "Terrace Light"
       address: "1/1/14"
 
@@ -221,6 +221,12 @@ knx:
       address: "1/1/18"
     - name: "Schalten Terrasse"
       address: "1/1/24"
+
+  # Front door motor lock (Haustüre_Motorschloss from KNX plan) — unlock via 1/0/56
+  lock:
+    - name: "Front Door Lock"
+      address: "1/0/56"
+      state_address: "1/0/57"
 
   cover:
     - name: "WC Blind"
