@@ -138,6 +138,14 @@ views:
       - type: horizontal-stack
         cards:
           - type: tile
+            entity: switch.central_all_off
+            name: All Off
+            icon: mdi:power
+          - type: tile
+            entity: switch.bathroom_heater
+            name: Bathroom Heater
+            icon: mdi:radiator
+          - type: tile
             entity: switch.garagentor
             name: Garage Door
             icon: mdi:garage

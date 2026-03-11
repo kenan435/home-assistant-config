@@ -217,6 +217,10 @@ knx:
       type: temperature
 
   switch:
+    - name: "Central All Off"
+      address: "1/0/0"
+    - name: "Bathroom Heater"
+      address: "1/0/64"
     - name: "Garagentor"
       address: "1/1/18"
     - name: "Schalten Terrasse"
