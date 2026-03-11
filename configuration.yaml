@@ -221,12 +221,8 @@ knx:
       address: "1/1/18"
     - name: "Schalten Terrasse"
       address: "1/1/24"
-
-  # Front door motor lock (Haustüre_Motorschloss from KNX plan) — unlock via 1/0/56
-  lock:
-    - name: "Front Door Lock"
+    - name: "Front Door Unlock"
       address: "1/0/56"
-      state_address: "1/0/57"
 
   cover:
     - name: "WC Blind"
