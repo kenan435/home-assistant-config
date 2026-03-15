@@ -2,7 +2,19 @@
 
 The Loxone intercom sends UDP broadcast packets on **port 8112** when the doorbell is pressed (command ID `50`). The script `loxone_doorbell_udp.py` listens for those packets and triggers your existing HA doorbell automation (push notification).
 
-**Deployment:** The script runs **outside** Home Assistant (on a host that can bind to UDP 8112). HA’s Terminal & SSH app can only expose one port (SSH), so run the script on your Mac, a Raspberry Pi, or another always-on device on the same network. It then calls the HA API to trigger the doorbell automation.
+**Deployment:** Run the script either **(A)** as a **Home Assistant add-on** (recommended: runs on the HA host as a background service; see below), or **(B)** outside HA on your Mac, a Raspberry Pi, or another always-on device. HA’s Terminal & SSH app can only expose one port (SSH), so the add-on uses its own container and port 8112.
+
+### Install as Home Assistant add-on (runs as background service on HA)
+
+This repo includes the add-on **Loxone Doorbell** in the folder `loxone_doorbell/`. To install it:
+
+1. In HA: **Settings** → **Apps** → **App store** (⋮) → **Repositories** → add `https://github.com/kenan435/home-assistant-config`.
+2. Refresh; install **Loxone Doorbell** from the store.
+3. In the add-on **Configuration** set **HA URL** and **HA token** (long-lived token).
+4. Ensure this repo is present in `/config` so that `/config/scripts/loxone_doorbell_udp.py` exists (e.g. Git pull into config).
+5. **Start** the add-on and enable **Start on boot**.
+
+The add-on listens on port 8112 and triggers your doorbell automation when it receives the Loxone UDP packet.
 
 ## Requirements
 
