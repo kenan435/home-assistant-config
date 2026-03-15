@@ -62,8 +62,8 @@
                   - light.basement_stairway_light
 
 # ─── DOORBELL NOTIFICATION ───────────────────────────────────────────────────
-# Uses the KNX front door sensor (binary_sensor.sensor_hausture, address 2/2/118).
-# When the doorbell button is pressed, this sensor briefly pulses to "on".
+# Triggered by: (1) KNX binary_sensor.doorbell, or (2) Loxone intercom UDP
+# (scripts/loxone_doorbell_udp.py listens on port 8112 for command '50' and calls this automation via API).
 
 - id: doorbell_notification
   alias: "Front Door Motion - Push Notification"
