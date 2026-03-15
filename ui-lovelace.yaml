@@ -79,7 +79,7 @@ views:
             name: Last Ring
             icon: mdi:doorbell
       - type: markdown
-        content: "**Doorbell:** KNX + Loxone intercom (UDP). Last Ring = last time the push was sent."
+        content: "**Doorbell:** KNX + Loxone (UDP). Push + Sonos TTS. Last Ring = last trigger."
 
       # Blink cameras — tap to snap, hold for full view
       - type: picture-glance
