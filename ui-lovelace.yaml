@@ -78,6 +78,8 @@ views:
           - entity: sensor.last_doorbell_ring
             name: Last Ring
             icon: mdi:doorbell
+      - type: markdown
+        content: "**Doorbell:** KNX + Loxone intercom (UDP). Last Ring = last time the push was sent."
 
       # Blink cameras — tap to snap, hold for full view
       - type: picture-glance

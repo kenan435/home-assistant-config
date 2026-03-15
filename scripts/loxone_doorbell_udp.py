@@ -21,6 +21,10 @@ Requires: HA URL and long-lived access token (env or .env file).
   python3 loxone_doorbell_udp.py
 
 Or run as a systemd service (see README in scripts/).
+
+Test locally: send to 127.0.0.1 (same machine as the script), not to the HA host:
+  echo -n $'\x30\x31\x40\x35\x30\x23' | nc -u -w1 127.0.0.1 8112
+("01@50#" = counter 01, command 50 = doorbell)
 """
 
 import os
@@ -45,12 +49,13 @@ def trigger_doorbell():
         print("HA_TOKEN not set, skipping trigger", file=sys.stderr)
         return
     url = f"{HA_URL}/api/services/automation/trigger"
-    data = '{"entity_id": "' + AUTOMATION_ENTITY + '"}' .encode("utf-8")
+    entity_id = AUTOMATION_ENTITY.decode() if isinstance(AUTOMATION_ENTITY, bytes) else str(AUTOMATION_ENTITY)
+    data = f'{{"entity_id": "{entity_id}"}}'.encode("utf-8")
     req = urllib.request.Request(
         url,
         data=data,
         headers={
-            "Authorization": f"Bearer {HA_TOKEN}",
+            "Authorization": f"Bearer {HA_TOKEN.decode() if isinstance(HA_TOKEN, bytes) else HA_TOKEN}",
             "Content-Type": "application/json",
         },
         method="POST",
@@ -94,6 +99,10 @@ def main():
         if is_doorbell_packet(data):
             print(f"Doorbell packet from {addr}")
             trigger_doorbell()
+        else:
+            # Debug: log non-doorbell UDP so you see traffic (e.g. when testing with nc)
+            if len(data) >= 1:
+                print(f"[debug] UDP from {addr} len={len(data)} raw={data[:20]!r}", file=sys.stderr)
 
 
 if __name__ == "__main__":
