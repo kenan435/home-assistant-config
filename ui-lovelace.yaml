@@ -171,23 +171,6 @@ views:
           - entity: sensor.temperature_buro
             name: Office
 
-      # Heating (KNX thermostats) — downstairs: Living, Office; upstairs: 3 rooms + bathroom
-      - type: entities
-        title: Heating
-        entities:
-          - entity: climate.living_room_heating
-            name: Living Room
-          - entity: climate.office_heating
-            name: Office
-          - entity: climate.bedroom_heating
-            name: Bedroom
-          - entity: climate.room_heating
-            name: Room
-          - entity: climate.kids_room_heating
-            name: Kids Room
-          - entity: climate.bathroom_heating
-            name: Bathroom
-
       # Internet & Router
       - type: glance
         title: Internet & Router
