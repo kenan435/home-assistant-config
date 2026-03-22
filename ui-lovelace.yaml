@@ -4,9 +4,17 @@ views:
   - title: Home
     icon: mdi:home
     path: uebersicht
-    # Three columns: left = info & controls, middle = Blink cameras (iPad-friendly), right = map & temps
+    # Three columns: left = info & controls, middle = cameras, right = map & temps.
+    # Responsive: on narrow screens (phones) stack columns vertically — requires HACS "card-mod".
     cards:
       - type: horizontal-stack
+        card_mod:
+          style: |
+            @media (max-width: 600px) {
+              :host {
+                flex-direction: column !important;
+              }
+            }
         cards:
           - type: vertical-stack
             cards:
