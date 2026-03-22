@@ -49,6 +49,9 @@ views:
             name: Almedina
             icon: mdi:car
 
+      # Air quality: entity IDs must match your Sensor.Community (Luftdaten) sensors.
+      # If this card is empty: Settings → Entities → search "pm2" or "pm10" and replace below.
+      # Or re-add integration: Settings → Devices & services → Sensor.Community (sensor ID from maps.sensor.community).
       - type: history-graph
         title: Air Quality Today
         hours_to_show: 24
