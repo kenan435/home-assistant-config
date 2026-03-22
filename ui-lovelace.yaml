@@ -4,231 +4,219 @@ views:
   - title: Home
     icon: mdi:home
     path: uebersicht
+    # Three columns: left = info & controls, middle = Blink cameras (iPad-friendly), right = map & temps
     cards:
-      # Who is home + phone batteries
       - type: horizontal-stack
         cards:
           - type: vertical-stack
             cards:
-              - type: tile
-                entity: person.kenan
-                name: Kenan
-                show_entity_picture: true
-              - type: tile
-                entity: sensor.kenans_iphone_battery_level
-                name: iPhone
-                icon: mdi:battery
+              # ─── Left column ───
+              - type: horizontal-stack
+                cards:
+                  - type: vertical-stack
+                    cards:
+                      - type: tile
+                        entity: person.kenan
+                        name: Kenan
+                        show_entity_picture: true
+                      - type: tile
+                        entity: sensor.kenans_iphone_battery_level
+                        name: iPhone
+                        icon: mdi:battery
+                  - type: vertical-stack
+                    cards:
+                      - type: tile
+                        entity: person.almedina
+                        name: Almedina
+                        show_entity_picture: true
+                      - type: tile
+                        entity: sensor.almedina_cell_battery_level
+                        name: Phone
+                        icon: mdi:battery
+              - type: weather-forecast
+                entity: weather.forecast_home
+                forecast_type: daily
+              - type: glance
+                title: Commute to Work
+                entities:
+                  - entity: sensor.kenan_to_work
+                    name: Kenan
+                    icon: mdi:car
+                  - entity: sensor.almedina_to_work
+                    name: Almedina
+                    icon: mdi:car
+              # Air quality: entity IDs must match your Sensor.Community (Luftdaten) sensors.
+              - type: history-graph
+                title: Air Quality Today
+                hours_to_show: 24
+                logarithmic_scale: false
+                entities:
+                  - entity: sensor.sensor_44750_pm2_5
+                    name: PM2.5
+                  - entity: sensor.sensor_44750_pm10
+                    name: PM10
+              - type: glance
+                title: Security
+                entities:
+                  - entity: binary_sensor.sensor_hausture
+                    name: Door Contact
+                    icon: mdi:door
+                  - entity: switch.front_door_unlock
+                    name: Unlock
+                    icon: mdi:lock-open
+                  - entity: switch.garagentor
+                    name: Garage
+                    icon: mdi:garage
+                  - entity: alarm_control_panel.blink_home
+                    name: Blink
+                    icon: mdi:shield-home
+                  - entity: sensor.last_doorbell_ring
+                    name: Last Ring
+                    icon: mdi:doorbell
+              - type: horizontal-stack
+                cards:
+                  - type: tile
+                    entity: switch.central_all_off
+                    name: All Off
+                    icon: mdi:power
+                  - type: tile
+                    entity: switch.bathroom_heater
+                    name: Bathroom Heater
+                    icon: mdi:radiator
+                  - type: tile
+                    entity: switch.garagentor
+                    name: Garage Door
+                    icon: mdi:garage
+                  - type: tile
+                    entity: switch.schalten_terrasse
+                    name: Terrace
+                    icon: mdi:patio-heater
+              - type: glance
+                title: Internet & Router
+                entities:
+                  - entity: sensor.fritz_box_7590_ax_download_throughput
+                    name: Download
+                  - entity: sensor.fritz_box_7590_ax_upload_throughput
+                    name: Upload
+                  - entity: sensor.fritz_box_7590_ax_external_ip
+                    name: External IP
+                  - entity: sensor.fritz_box_7590_ax_cpu_temperature
+                    name: Router Temp
+                  - entity: sensor.fritz_box_7590_ax_gb_received
+                    name: GB In
+                  - entity: sensor.fritz_box_7590_ax_gb_sent
+                    name: GB Out
+              - type: glance
+                title: Raspberry Pi
+                entities:
+                  - entity: sensor.system_monitor_processor_use
+                    name: CPU
+                  - entity: sensor.system_monitor_memory_usage
+                    name: RAM
+                  - entity: sensor.system_monitor_disk_use
+                    name: Disk
+                  - entity: sensor.system_monitor_processor_temperature
+                    name: Temp
+                  - entity: sensor.system_monitor_last_boot
+                    name: Last Boot
+              - type: entities
+                title: Blinds
+                entities:
+                  - entity: cover.living_room_blinds
+                    name: Living Room
+                  - entity: cover.kitchen_blinds
+                    name: Kitchen
+                  - entity: cover.office_blinds
+                    name: Office
+                  - entity: cover.bedroom_blinds
+                    name: Bedroom
+                  - entity: cover.rollo_bad
+                    name: Bathroom
+                  - entity: cover.rollo_wc
+                    name: WC
+                  - entity: cover.rollo_zimmer
+                    name: Room
+                  - entity: cover.rollo_kind
+                    name: Kids Room
+
           - type: vertical-stack
             cards:
-              - type: tile
-                entity: person.almedina
-                name: Almedina
-                show_entity_picture: true
-              - type: tile
-                entity: sensor.almedina_cell_battery_level
-                name: Phone
-                icon: mdi:battery
+              # ─── Middle column — security cameras ───
+              - type: picture-glance
+                title: Front Door
+                camera_image: camera.front_door
+                aspect_ratio: 45%
+                entities:
+                  - entity: sensor.blink_front_door_temperature
+                    name: Temp
+                tap_action:
+                  action: call-service
+                  service: blink.trigger_camera
+                  target:
+                    entity_id: camera.front_door
+                hold_action:
+                  action: more-info
+              - type: horizontal-stack
+                cards:
+                  - type: picture-glance
+                    title: Entrance
+                    camera_image: camera.entrance
+                    aspect_ratio: 70%
+                    entities:
+                      - entity: sensor.blink_entrance_temperature
+                        name: Temp
+                    tap_action:
+                      action: call-service
+                      service: blink.trigger_camera
+                      target:
+                        entity_id: camera.entrance
+                    hold_action:
+                      action: more-info
+                  - type: picture-glance
+                    title: Garden
+                    camera_image: camera.garden
+                    aspect_ratio: 70%
+                    entities:
+                      - entity: sensor.blink_garden_temperature
+                        name: Temp
+                    tap_action:
+                      action: call-service
+                      service: blink.trigger_camera
+                      target:
+                        entity_id: camera.garden
+                    hold_action:
+                      action: more-info
 
-      # Weather
-      - type: weather-forecast
-        entity: weather.forecast_home
-        forecast_type: daily
-
-      - type: iframe
-        url: https://embed.windy.com/embed2.html?lat=48.22&lon=11.47&detailLat=48.22&detailLon=11.47&width=650&height=450&zoom=8&level=surface&overlay=rain&product=ecmwf&menu=&message=true&marker=true&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=km%2Fh&metricTemp=%C2%B0C&radarRange=-1
-        aspect_ratio: 75%
-
-      # Commute times
-      - type: glance
-        title: Commute to Work
-        entities:
-          - entity: sensor.kenan_to_work
-            name: Kenan
-            icon: mdi:car
-          - entity: sensor.almedina_to_work
-            name: Almedina
-            icon: mdi:car
-
-      # Air quality: entity IDs must match your Sensor.Community (Luftdaten) sensors.
-      # If this card is empty: Settings → Entities → search "pm2" or "pm10" and replace below.
-      # Or re-add integration: Settings → Devices & services → Sensor.Community (sensor ID from maps.sensor.community).
-      - type: history-graph
-        title: Air Quality Today
-        hours_to_show: 24
-        logarithmic_scale: false
-        entities:
-          - entity: sensor.sensor_44750_pm2_5
-            name: PM2.5
-          - entity: sensor.sensor_44750_pm10
-            name: PM10
-
-      # Security & Sensors
-      - type: glance
-        title: Security
-        entities:
-          - entity: binary_sensor.sensor_hausture
-            name: Door Contact
-            icon: mdi:door
-          - entity: switch.front_door_unlock
-            name: Unlock
-            icon: mdi:lock-open
-          - entity: switch.garagentor
-            name: Garage
-            icon: mdi:garage
-          - entity: alarm_control_panel.blink_home
-            name: Blink
-            icon: mdi:shield-home
-          - entity: sensor.last_doorbell_ring
-            name: Last Ring
-            icon: mdi:doorbell
-
-      # Blink cameras — tap to snap, hold for full view
-      - type: picture-glance
-        title: Front Door
-        camera_image: camera.front_door
-        aspect_ratio: 45%
-        entities:
-          - entity: sensor.blink_front_door_temperature
-            name: Temp
-        tap_action:
-          action: call-service
-          service: blink.trigger_camera
-          target:
-            entity_id: camera.front_door
-        hold_action:
-          action: more-info
-
-      - type: horizontal-stack
-        cards:
-          - type: picture-glance
-            title: Entrance
-            camera_image: camera.entrance
-            aspect_ratio: 70%
-            entities:
-              - entity: sensor.blink_entrance_temperature
-                name: Temp
-            tap_action:
-              action: call-service
-              service: blink.trigger_camera
-              target:
-                entity_id: camera.entrance
-            hold_action:
-              action: more-info
-          - type: picture-glance
-            title: Garden
-            camera_image: camera.garden
-            aspect_ratio: 70%
-            entities:
-              - entity: sensor.blink_garden_temperature
-                name: Temp
-            tap_action:
-              action: call-service
-              service: blink.trigger_camera
-              target:
-                entity_id: camera.garden
-            hold_action:
-              action: more-info
-
-      # WiFi QR Code for guests
-      - type: markdown
-        content: >
-          <div style="text-align:center;padding:8px">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=WIFI:S:Loading...;T:WPA;P:mi%20smo%20zeljini;;" width="180" style="border-radius:8px"/>
-            <p style="margin:6px 0 0;font-size:0.85em;opacity:0.7">📶 Guest WiFi · <b>Loading...</b> · scan to connect</p>
-          </div>
-
-      # Quick controls
-      - type: horizontal-stack
-        cards:
-          - type: tile
-            entity: switch.central_all_off
-            name: All Off
-            icon: mdi:power
-          - type: tile
-            entity: switch.bathroom_heater
-            name: Bathroom Heater
-            icon: mdi:radiator
-          - type: tile
-            entity: switch.garagentor
-            name: Garage Door
-            icon: mdi:garage
-          - type: tile
-            entity: switch.schalten_terrasse
-            name: Terrace
-            icon: mdi:patio-heater
-
-      # Room temperatures + heating setpoints (KNX climate)
-      - type: entities
-        title: Temperatures
-        entities:
-          - entity: climate.living_room_heating
-            name: Living Room
-          - entity: climate.office_heating
-            name: Office
-          - entity: climate.bedroom_heating
-            name: Bedroom
-          - entity: climate.room_heating
-            name: Room
-          - entity: climate.kids_room_heating
-            name: Kids Room
-          - entity: climate.bathroom_heating
-            name: Bathroom
-          - type: divider
-          - entity: sensor.temperature_kuche
-            name: Kitchen (sensor only)
-
-      # Internet & Router
-      - type: glance
-        title: Internet & Router
-        entities:
-          - entity: sensor.fritz_box_7590_ax_download_throughput
-            name: Download
-          - entity: sensor.fritz_box_7590_ax_upload_throughput
-            name: Upload
-          - entity: sensor.fritz_box_7590_ax_external_ip
-            name: External IP
-          - entity: sensor.fritz_box_7590_ax_cpu_temperature
-            name: Router Temp
-          - entity: sensor.fritz_box_7590_ax_gb_received
-            name: GB In
-          - entity: sensor.fritz_box_7590_ax_gb_sent
-            name: GB Out
-
-      # Raspberry Pi stats
-      - type: glance
-        title: Raspberry Pi
-        entities:
-          - entity: sensor.system_monitor_processor_use
-            name: CPU
-          - entity: sensor.system_monitor_memory_usage
-            name: RAM
-          - entity: sensor.system_monitor_disk_use
-            name: Disk
-          - entity: sensor.system_monitor_processor_temperature
-            name: Temp
-          - entity: sensor.system_monitor_last_boot
-            name: Last Boot
-
-      # Blind groups
-      - type: entities
-        title: Blinds
-        entities:
-          - entity: cover.living_room_blinds
-            name: Living Room
-          - entity: cover.kitchen_blinds
-            name: Kitchen
-          - entity: cover.office_blinds
-            name: Office
-          - entity: cover.bedroom_blinds
-            name: Bedroom
-          - entity: cover.rollo_bad
-            name: Bathroom
-          - entity: cover.rollo_wc
-            name: WC
-          - entity: cover.rollo_zimmer
-            name: Room
-          - entity: cover.rollo_kind
-            name: Kids Room
+          - type: vertical-stack
+            cards:
+              # ─── Right column ───
+              - type: iframe
+                url: https://embed.windy.com/embed2.html?lat=48.22&lon=11.47&detailLat=48.22&detailLon=11.47&width=650&height=450&zoom=8&level=surface&overlay=rain&product=ecmwf&menu=&message=true&marker=true&calendar=now&pressure=&type=map&location=coordinates&detail=&metricWind=km%2Fh&metricTemp=%C2%B0C&radarRange=-1
+                aspect_ratio: 75%
+              - type: markdown
+                content: >
+                  <div style="text-align:center;padding:8px">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=WIFI:S:Loading...;T:WPA;P:mi%20smo%20zeljini;;" width="180" style="border-radius:8px"/>
+                    <p style="margin:6px 0 0;font-size:0.85em;opacity:0.7">📶 Guest WiFi · <b>Loading...</b> · scan to connect</p>
+                  </div>
+              - type: entities
+                title: Temperatures
+                entities:
+                  - entity: climate.living_room_heating
+                    name: Living Room
+                  - entity: climate.office_heating
+                    name: Office
+                  - entity: climate.bedroom_heating
+                    name: Bedroom
+                  - entity: climate.room_heating
+                    name: Room
+                  - entity: climate.kids_room_heating
+                    name: Kids Room
+                  - entity: climate.bathroom_heating
+                    name: Bathroom
+                  - type: divider
+                  - entity: sensor.temperature_kuche
+                    name: Kitchen (sensor only)
 
   # ─── HEATING ─────────────────────────────────────────────────────────────────
   - title: Heating
