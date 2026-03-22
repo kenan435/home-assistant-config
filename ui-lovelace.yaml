@@ -87,6 +87,16 @@ views:
               - type: horizontal-stack
                 cards:
                   - type: tile
+                    entity: input_boolean.away_mode
+                    name: Away mode
+                    icon: mdi:car-arrow-right
+                  - type: tile
+                    entity: input_boolean.vacation_mode
+                    name: Vacation
+                    icon: mdi:palm-tree
+              - type: horizontal-stack
+                cards:
+                  - type: tile
                     entity: switch.central_all_off
                     name: All Off
                     icon: mdi:power

@@ -129,6 +129,16 @@ input_boolean:
     icon: mdi:motion-sensor
     initial: true
 
+  away_mode:
+    name: Away mode
+    icon: mdi:car-arrow-right
+    initial: false
+
+  vacation_mode:
+    name: Vacation mode
+    icon: mdi:palm-tree
+    initial: false
+
 # Sonos fetches this URL directly — use your HA LAN IP if mDNS (homeassistant.local) fails on speakers.
 input_text:
   doorbell_chime_url:

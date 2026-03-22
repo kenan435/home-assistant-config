@@ -71,7 +71,10 @@
   triggers:
     - platform: time
       at: "20:00:00"
-  conditions: []
+  conditions:
+    - condition: state
+      entity_id: input_boolean.away_mode
+      state: "off"
   actions:
     - action: cover.set_cover_position
       target:
@@ -89,6 +92,54 @@
   triggers:
     - platform: time
       at: "06:00:00"
+  conditions:
+    - condition: state
+      entity_id: input_boolean.away_mode
+      state: "off"
+  actions:
+    - action: cover.open_cover
+      target:
+        entity_id:
+          - cover.living_room_blinds
+          - cover.kitchen_blinds
+          - cover.office_blinds
+
+# ─── AWAY MODE — CLOSE ALL BLINDS ────────────────────────────────────────────
+# Vacation mode: helper only for now (no automations). Add actions later when needed.
+
+- id: away_mode_close_all_blinds
+  alias: "Away mode - Close all blinds"
+  description: "When Away mode is turned on, close every blind (groups + rooms not in groups)."
+  mode: single
+  triggers:
+    - platform: state
+      entity_id: input_boolean.away_mode
+      from: "off"
+      to: "on"
+  conditions: []
+  actions:
+    - action: cover.close_cover
+      target:
+        entity_id:
+          - cover.living_room_blinds
+          - cover.kitchen_blinds
+          - cover.office_blinds
+          - cover.bedroom_blinds
+          - cover.rollo_bad
+          - cover.rollo_wc
+          - cover.rollo_zimmer
+          - cover.rollo_kind
+          - cover.wc_blind
+
+- id: away_mode_off_open_all_blinds
+  alias: "Away off - Open all blinds (home)"
+  description: "When Away mode is turned off, open every blind (same set as Away close). No separate 'home' toggle."
+  mode: single
+  triggers:
+    - platform: state
+      entity_id: input_boolean.away_mode
+      from: "on"
+      to: "off"
   conditions: []
   actions:
     - action: cover.open_cover
@@ -97,6 +148,12 @@
           - cover.living_room_blinds
           - cover.kitchen_blinds
           - cover.office_blinds
+          - cover.bedroom_blinds
+          - cover.rollo_bad
+          - cover.rollo_wc
+          - cover.rollo_zimmer
+          - cover.rollo_kind
+          - cover.wc_blind
 
 # ─── DOORBELL NOTIFICATION ───────────────────────────────────────────────────
 # Triggered by: (1) KNX binary_sensor.doorbell, or (2) Loxone intercom UDP
