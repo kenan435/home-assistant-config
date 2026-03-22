@@ -196,20 +196,19 @@
         entity_id: light.badezimmer
 
 # ─── HEATING NIGHT SETBACK (21:00–5:00) ───────────────────────────────────────
-# Fully automatic: at 21:00 capture current thermostat setpoint (daytime) per room,
-# store in input_number, then set thermostat to daytime - 3°C. Delays between KNX writes.
-# At 5:00 restore each room to that stored daytime (next day’s setpoint).
+# At 21:00: save each room’s current setpoint (daytime) to input_number, then set all zones to 16°C overnight.
+# At 5:00: restore each room to the saved daytime setpoint. Delays between KNX writes.
 
 - id: heating_night_setback_21
-  alias: "Heating - Night setback at 21:00 (-3°)"
-  description: "Capture daytime setpoint per room, then reduce by 3° for the night"
+  alias: "Heating - Night setpoint at 21:00 (16°C)"
+  description: "Capture daytime setpoint per room, then set all heating to 16°C overnight"
   mode: single
   triggers:
     - platform: time
       at: "21:00:00"
   conditions: []
   actions:
-    # Living Room: capture current target → day setpoint, then set to day setpoint - 3
+    # Living Room: save daytime setpoint, then night 16°C
     - action: input_number.set_value
       target:
         entity_id: input_number.living_room_day_setpoint
@@ -221,7 +220,7 @@
       target:
         entity_id: climate.living_room_heating
       data:
-        temperature: "{{ ((states('input_number.living_room_day_setpoint') | float) - 3) | round(1) }}"
+        temperature: 16
     - delay:
         seconds: 1
     # Office
@@ -236,7 +235,7 @@
       target:
         entity_id: climate.office_heating
       data:
-        temperature: "{{ ((states('input_number.office_day_setpoint') | float) - 3) | round(1) }}"
+        temperature: 16
     - delay:
         seconds: 1
     # Bedroom
@@ -251,7 +250,7 @@
       target:
         entity_id: climate.bedroom_heating
       data:
-        temperature: "{{ ((states('input_number.bedroom_day_setpoint') | float) - 3) | round(1) }}"
+        temperature: 16
     - delay:
         seconds: 1
     # Room
@@ -266,7 +265,7 @@
       target:
         entity_id: climate.room_heating
       data:
-        temperature: "{{ ((states('input_number.room_day_setpoint') | float) - 3) | round(1) }}"
+        temperature: 16
     - delay:
         seconds: 1
     # Kids Room
@@ -281,7 +280,7 @@
       target:
         entity_id: climate.kids_room_heating
       data:
-        temperature: "{{ ((states('input_number.kids_room_day_setpoint') | float) - 3) | round(1) }}"
+        temperature: 16
     - delay:
         seconds: 1
     # Bathroom
@@ -296,7 +295,7 @@
       target:
         entity_id: climate.bathroom_heating
       data:
-        temperature: "{{ ((states('input_number.bathroom_day_setpoint') | float) - 3) | round(1) }}"
+        temperature: 16
 
 - id: heating_day_restore_05
   alias: "Heating - Restore day setpoint at 5:00"
