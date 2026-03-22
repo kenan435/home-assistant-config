@@ -156,20 +156,25 @@ views:
             name: Terrace
             icon: mdi:patio-heater
 
-      # Room temperatures at a glance
-      - type: glance
-        title: Temperatures
+      # Room temperatures + heating setpoints (KNX climate)
+      - type: entities
+        title: Temperatures & setpoints
         entities:
-          - entity: sensor.temperature_wohnzimmer
+          - entity: climate.living_room_heating
             name: Living Room
-          - entity: sensor.temperature_schlafzimmer
-            name: Bedroom
-          - entity: sensor.temperature_kuche
-            name: Kitchen
-          - entity: sensor.temperature_bad
-            name: Bathroom
-          - entity: sensor.temperature_buro
+          - entity: climate.office_heating
             name: Office
+          - entity: climate.bedroom_heating
+            name: Bedroom
+          - entity: climate.room_heating
+            name: Room
+          - entity: climate.kids_room_heating
+            name: Kids Room
+          - entity: climate.bathroom_heating
+            name: Bathroom
+          - type: divider
+          - entity: sensor.temperature_kuche
+            name: Kitchen (sensor only)
 
       # Internet & Router
       - type: glance
