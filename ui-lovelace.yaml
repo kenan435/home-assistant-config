@@ -161,7 +161,7 @@ views:
 
       # Room temperatures + heating setpoints (KNX climate)
       - type: entities
-        title: Temperatures & setpoints
+        title: Temperatures
         entities:
           - entity: climate.living_room_heating
             name: Living Room
