@@ -164,7 +164,7 @@ input_number:
     unit_of_measurement: "°C"
     mode: box
   room_day_setpoint:
-    name: Room day setpoint
+    name: "Adnan's Room day setpoint"
     min: 5
     max: 30
     step: 0.5
@@ -172,7 +172,7 @@ input_number:
     unit_of_measurement: "°C"
     mode: box
   kids_room_day_setpoint:
-    name: Kids Room day setpoint
+    name: "Haaris' Room day setpoint"
     min: 5
     max: 30
     step: 0.5
@@ -225,9 +225,9 @@ knx:
       address: "1/0/38"
     - name: "WC Wall Light"
       address: "1/0/40"
-    - name: "Kids Room Light"
+    - name: "Haaris' Room Light"
       address: "1/0/42"
-    - name: "Room Light"
+    - name: "Adnan's Room Light"
       address: "1/0/44"
     - name: "Upstairs Hallway Light"
       address: "1/0/54"
@@ -259,10 +259,10 @@ knx:
     - name: "Temperature Büro"
       state_address: "3/2/31"
       type: temperature
-    - name: "Temperature Kinderzimmer"
+    - name: "Haaris' Room temperature"
       state_address: "3/3/41"
       type: temperature
-    - name: "Temperature Zimmer"
+    - name: "Adnan's Room temperature"
       state_address: "3/3/11"
       type: temperature
     - name: "Temperature Hobby"
@@ -317,14 +317,14 @@ knx:
       operation_mode_state_address: "3/2/34"
       min_temp: 5
       max_temp: 30
-    - name: "Kids Room Heating"
+    - name: "Haaris' Room Heating"
       temperature_address: "3/3/40"
       target_temperature_address: "3/3/41"
       target_temperature_state_address: "3/3/43"
       operation_mode_state_address: "3/3/44"
       min_temp: 5
       max_temp: 30
-    - name: "Room Heating"
+    - name: "Adnan's Room Heating"
       temperature_address: "3/3/10"
       target_temperature_address: "3/3/11"
       target_temperature_state_address: "3/3/13"
@@ -383,7 +383,7 @@ knx:
       stop_address: "2/2/121"
       position_state_address: "2/2/123"
 
-    - name: "Room Blind"
+    - name: "Adnan's Room Blind"
       move_long_address: "2/3/10"
       stop_address: "2/3/11"
       position_state_address: "2/3/13"
@@ -403,7 +403,7 @@ knx:
       stop_address: "2/3/51"
       position_state_address: "2/3/53"
 
-    - name: "Kids Room Blind"
+    - name: "Haaris' Room Blind"
       move_long_address: "2/3/60"
       stop_address: "2/3/61"
       position_state_address: "2/3/63"

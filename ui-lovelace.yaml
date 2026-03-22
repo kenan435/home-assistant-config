@@ -194,9 +194,9 @@ views:
                   - entity: cover.rollo_wc
                     name: WC
                   - entity: cover.rollo_zimmer
-                    name: Room
+                    name: "Adnan's Room"
                   - entity: cover.rollo_kind
-                    name: Kids Room
+                    name: "Haaris' Room"
 
           - type: vertical-stack
             cards:
@@ -220,9 +220,9 @@ views:
                   - entity: climate.bedroom_heating
                     name: Bedroom
                   - entity: climate.room_heating
-                    name: Room
+                    name: "Adnan's Room"
                   - entity: climate.kids_room_heating
-                    name: Kids Room
+                    name: "Haaris' Room"
                   - entity: climate.bathroom_heating
                     name: Bathroom
                   - type: divider
@@ -247,9 +247,9 @@ views:
           - entity: climate.bedroom_heating
             name: Bedroom
           - entity: climate.room_heating
-            name: Room
+            name: "Adnan's Room"
           - entity: climate.kids_room_heating
-            name: Kids Room
+            name: "Haaris' Room"
           - entity: climate.bathroom_heating
             name: Bathroom
 
@@ -393,8 +393,8 @@ views:
           - entity: cover.blind_8
             name: Office Blind 2
 
-  # ─── KIDS ROOM & ROOM ────────────────────────────────────────────────────────
-  - title: Kids & Room
+  # ─── ADNAN'S ROOM & HAARIS' ROOM ─────────────────────────────────────────────
+  - title: Adnan & Haaris
     icon: mdi:door
     path: kids-room
     cards:
@@ -402,17 +402,17 @@ views:
         title: Lights
         entities:
           - entity: light.licht_zimmer
-            name: Room
+            name: "Adnan's Room"
           - entity: light.licht_kind
-            name: Kids Room
+            name: "Haaris' Room"
 
       - type: entities
         title: Blinds
         entities:
           - entity: cover.rollo_zimmer
-            name: Room Blind
+            name: "Adnan's Room Blind"
           - entity: cover.rollo_kind
-            name: Kids Room Blind
+            name: "Haaris' Room Blind"
 
   # ─── OUTSIDE & HALLWAYS ──────────────────────────────────────────────────────
   - title: Outside

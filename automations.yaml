@@ -61,6 +61,43 @@
                   - light.heating_room_light
                   - light.basement_stairway_light
 
+# ─── BLINDS EVENING (50% AT 20:00) ───────────────────────────────────────────
+# Uses cover groups from configuration.yaml. HA: position 0 = closed, 100 = fully open → 50 = halfway.
+
+- id: blinds_evening_living_kitchen_office_50
+  alias: "Blinds - Living, Kitchen, Office to 50% at 8 PM"
+  description: "Set main-area blinds to 50% position every night at 20:00."
+  mode: single
+  triggers:
+    - platform: time
+      at: "20:00:00"
+  conditions: []
+  actions:
+    - action: cover.set_cover_position
+      target:
+        entity_id:
+          - cover.living_room_blinds
+          - cover.kitchen_blinds
+          - cover.office_blinds
+      data:
+        position: 50
+
+- id: blinds_morning_living_kitchen_office_open
+  alias: "Blinds - Living, Kitchen, Office open at 6 AM"
+  description: "Open main-area blinds every morning at 06:00."
+  mode: single
+  triggers:
+    - platform: time
+      at: "06:00:00"
+  conditions: []
+  actions:
+    - action: cover.open_cover
+      target:
+        entity_id:
+          - cover.living_room_blinds
+          - cover.kitchen_blinds
+          - cover.office_blinds
+
 # ─── DOORBELL NOTIFICATION ───────────────────────────────────────────────────
 # Triggered by: (1) KNX binary_sensor.doorbell, or (2) Loxone intercom UDP
 # (scripts/loxone_doorbell_udp.py listens on port 8112 for command '50' and calls this automation via API).
@@ -242,7 +279,7 @@
         temperature: 16
     - delay:
         seconds: 1
-    # Room
+    # Adnan's Room
     - action: input_number.set_value
       target:
         entity_id: input_number.room_day_setpoint
@@ -257,7 +294,7 @@
         temperature: 16
     - delay:
         seconds: 1
-    # Kids Room
+    # Haaris' Room
     - action: input_number.set_value
       target:
         entity_id: input_number.kids_room_day_setpoint
