@@ -4,15 +4,28 @@ views:
   - title: Home
     icon: mdi:home
     path: uebersicht
-    # Three columns: left = info & controls, middle = cameras, right = map & temps.
-    # Responsive: on narrow screens (phones) stack columns vertically — requires HACS "card-mod".
+    # Full-width layout (no narrow centered column on iPad). Requires HACS "card-mod" for flex + mobile stack.
+    panel: true
     cards:
       - type: horizontal-stack
         card_mod:
           style: |
+            :host {
+              width: 100% !important;
+              max-width: 100% !important;
+              box-sizing: border-box;
+            }
+            /* Only the three top-level columns — avoid breaking nested stacks (e.g. people row) */
+            :host > ha-vertical-stack {
+              flex: 1 1 0 !important;
+              min-width: 0 !important;
+            }
             @media (max-width: 600px) {
               :host {
                 flex-direction: column !important;
+              }
+              :host > ha-vertical-stack {
+                flex: 1 1 auto !important;
               }
             }
         cards:
