@@ -54,6 +54,18 @@ views:
                         entity: sensor.almedina_cell_battery_level
                         name: Phone
                         icon: mdi:battery
+              # House mode: reload YAML / restart HA after adding input_booleans so entities exist.
+              - type: entities
+                title: House mode
+                show_header_toggle: false
+                state_color: true
+                entities:
+                  - entity: binary_sensor.at_home
+                    name: Home
+                  - entity: input_boolean.away_mode
+                    name: Away
+                  - entity: input_boolean.vacation_mode
+                    name: Vacation
               - type: weather-forecast
                 entity: weather.forecast_home
                 forecast_type: daily
@@ -84,16 +96,6 @@ views:
                   - entity: sensor.last_doorbell_ring
                     name: Last Ring
                     icon: mdi:doorbell
-              - type: horizontal-stack
-                cards:
-                  - type: tile
-                    entity: input_boolean.away_mode
-                    name: Away mode
-                    icon: mdi:car-arrow-right
-                  - type: tile
-                    entity: input_boolean.vacation_mode
-                    name: Vacation
-                    icon: mdi:palm-tree
               - type: horizontal-stack
                 cards:
                   - type: tile

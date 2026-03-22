@@ -104,6 +104,24 @@
           - cover.kitchen_blinds
           - cover.office_blinds
 
+- id: blinds_night_living_office_closed
+  alias: "Blinds - Living & Office fully closed at 10 PM"
+  description: "Close living room and office blinds all the way at 22:00 (kitchen unchanged)."
+  mode: single
+  triggers:
+    - platform: time
+      at: "22:00:00"
+  conditions:
+    - condition: state
+      entity_id: input_boolean.away_mode
+      state: "off"
+  actions:
+    - action: cover.close_cover
+      target:
+        entity_id:
+          - cover.living_room_blinds
+          - cover.office_blinds
+
 # ─── AWAY MODE — CLOSE ALL BLINDS ────────────────────────────────────────────
 # Vacation mode: helper only for now (no automations). Add actions later when needed.
 

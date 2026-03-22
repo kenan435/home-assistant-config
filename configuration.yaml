@@ -89,12 +89,22 @@ template:
             Never
           {% endif %}
 
+  - binary_sensor:
+      - name: At home
+        unique_id: house_at_home_indicator
+        device_class: presence
+        icon: mdi:home
+        state: "{{ states('input_boolean.away_mode') == 'off' }}"
+
 
 cover:
+  # KNX: Living Room Blind 1–4 (2/2/30 … 2/2/120). Blind 4 is in Kitchen group (kitchen/living opening).
+  # Group had rollo_wohnen_1 + 2,3,5 — Living Room Blind 1 (living_room_blind_1) was missing from Away/schedule.
   - platform: group
     name: "Living Room Blinds"
     entities:
       - cover.rollo_wohnen_1
+      - cover.living_room_blind_1
       - cover.living_room_blind_2
       - cover.living_room_blind_3
       - cover.living_room_blind_5
