@@ -66,16 +66,6 @@ views:
                   - entity: sensor.almedina_to_work
                     name: Almedina
                     icon: mdi:car
-              # Air quality: entity IDs must match your Sensor.Community (Luftdaten) sensors.
-              - type: history-graph
-                title: Air Quality Today
-                hours_to_show: 24
-                logarithmic_scale: false
-                entities:
-                  - entity: sensor.sensor_44750_pm2_5
-                    name: PM2.5
-                  - entity: sensor.sensor_44750_pm10
-                    name: PM10
               - type: glance
                 title: Security
                 entities:
@@ -140,29 +130,10 @@ views:
                     name: Temp
                   - entity: sensor.system_monitor_last_boot
                     name: Last Boot
-              - type: entities
-                title: Blinds
-                entities:
-                  - entity: cover.living_room_blinds
-                    name: Living Room
-                  - entity: cover.kitchen_blinds
-                    name: Kitchen
-                  - entity: cover.office_blinds
-                    name: Office
-                  - entity: cover.bedroom_blinds
-                    name: Bedroom
-                  - entity: cover.rollo_bad
-                    name: Bathroom
-                  - entity: cover.rollo_wc
-                    name: WC
-                  - entity: cover.rollo_zimmer
-                    name: Room
-                  - entity: cover.rollo_kind
-                    name: Kids Room
 
           - type: vertical-stack
             cards:
-              # ─── Middle column — security cameras ───
+              # ─── Middle column — security cameras + blinds ───
               - type: picture-glance
                 title: Front Door
                 camera_image: camera.front_door
@@ -207,6 +178,25 @@ views:
                         entity_id: camera.garden
                     hold_action:
                       action: more-info
+              - type: entities
+                title: Blinds
+                entities:
+                  - entity: cover.living_room_blinds
+                    name: Living Room
+                  - entity: cover.kitchen_blinds
+                    name: Kitchen
+                  - entity: cover.office_blinds
+                    name: Office
+                  - entity: cover.bedroom_blinds
+                    name: Bedroom
+                  - entity: cover.rollo_bad
+                    name: Bathroom
+                  - entity: cover.rollo_wc
+                    name: WC
+                  - entity: cover.rollo_zimmer
+                    name: Room
+                  - entity: cover.rollo_kind
+                    name: Kids Room
 
           - type: vertical-stack
             cards:

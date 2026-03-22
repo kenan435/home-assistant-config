@@ -1,7 +1,7 @@
 # https://developers.home-assistant.io/docs/add-ons/configuration
 name: Loxone Doorbell
 description: Listens for Loxone intercom UDP packets on port 8112 (command 50) and triggers the Home Assistant doorbell automation. Requires the script at /config/scripts/loxone_doorbell_udp.py (from this repo).
-version: "1.0.0"
+version: "1.0.1"
 slug: loxone_doorbell
 url: "https://github.com/kenan435/home-assistant-config/tree/main/loxone_doorbell"
 arch:
@@ -12,10 +12,11 @@ arch:
   - i386
 init: false
 image: python:3-alpine
+# Loxone uses UDP *broadcast*. Published Docker ports often never receive those packets.
+# Host network = listen on the Pi/LAN like a normal process (required for many setups).
+host_network: true
 map:
   - config:rw
-ports:
-  8112/udp: 8112
 options:
   ha_url: "http://homeassistant.local:8123"
   ha_token: ""

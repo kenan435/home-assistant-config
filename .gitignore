@@ -3,3 +3,5 @@
 secrets.yaml
 .cloud/
 backups/
+# Local doorbell sound (add on HA host, not committed)
+www/doorbell.mp3

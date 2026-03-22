@@ -1,0 +1,30 @@
+# Loxone doorbell UDP listener – run on a Pi (Raspberry Pi OS or any Linux)
+# Copy to the Pi and enable (see README).
+#
+# Option A: This Pi is your HA host but you run Raspberry Pi OS (not HA OS)
+#   – Copy this file and the script to the Pi, then:
+#     sudo cp loxone-doorbell.service /etc/systemd/system/
+#     sudo nano /etc/systemd/system/loxone-doorbell.service  # set HA_TOKEN
+#     sudo systemctl daemon-reload && sudo systemctl enable --now loxone-doorbell
+#
+# Option B: Separate Pi on the same network (recommended if HA runs on HA OS)
+#   – Same steps on that Pi; ensure it can reach HA (e.g. 192.168.136.136:8123)
+#     and that the Loxone intercom can reach this Pi on UDP 8112.
+
+[Unit]
+Description=Loxone doorbell UDP listener for Home Assistant
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/HomeAssistent/scripts
+Environment=HA_URL=http://192.168.136.136:8123
+Environment=HA_TOKEN=REPLACE_WITH_YOUR_LONG_LIVED_TOKEN
+ExecStart=/usr/bin/python3 /home/pi/HomeAssistent/scripts/loxone_doorbell_udp.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

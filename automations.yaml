@@ -64,11 +64,11 @@
 # ─── DOORBELL NOTIFICATION ───────────────────────────────────────────────────
 # Triggered by: (1) KNX binary_sensor.doorbell, or (2) Loxone intercom UDP
 # (scripts/loxone_doorbell_udp.py listens on port 8112 for command '50' and calls this automation via API).
-# Actions: push to phone + TTS on Sonos (and optional doorbell sound).
+# Actions: push to phone + doorbell chime on Kitchen + Living Room Sonos only.
 
 - id: doorbell_notification
   alias: "Front Door Motion - Push Notification"
-  description: "Notify when doorbell: push to phone + announce on Sonos."
+  description: "Notify when doorbell: push to phone + chime on kitchen/living Sonos."
   mode: single
   triggers:
     - platform: state
@@ -86,28 +86,17 @@
             sound: default
           tag: doorbell
 
-    # Announce on Sonos (TTS). If you don't use Nabu Casa, change to tts.google_translate_say or another tts.*_say.
-    - action: tts.cloud_say
+    # Chime on main Sonos only (Sonos pulls MP3 from URL — see Helpers → Doorbell chime URL).
+    # Put doorbell.mp3 in /config/www/ (see www/README.md). announce: ducks music then resumes.
+    - action: media_player.play_media
       target:
         entity_id:
           - media_player.living_room
           - media_player.kitchen
-          - media_player.bathroom
-          - media_player.family_room
-          - media_player.patio
       data:
-        message: "Someone is at the front door."
-        cache: false
-
-    # Optional: play a doorbell chime instead of/in addition to TTS. Put doorbell.mp3 in /config/www/, then uncomment:
-    # - action: media_player.play_media
-    #   target:
-    #     entity_id:
-    #       - media_player.living_room
-    #       - media_player.kitchen
-    #   data:
-    #     media_content_id: "http://homeassistant.local:8123/local/doorbell.mp3"
-    #     media_content_type: "music"
+        media_content_id: "{{ states('input_text.doorbell_chime_url') }}"
+        media_content_type: music
+        announce: true
 
 # ─── BLINK AUTO-ARM WHEN NOBODY HOME ────────────────────────────────────────
 # Arms Blink when both Kenan and Almedina leave during the day.

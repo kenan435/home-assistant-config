@@ -129,6 +129,14 @@ input_boolean:
     icon: mdi:motion-sensor
     initial: true
 
+# Sonos fetches this URL directly — use your HA LAN IP if mDNS (homeassistant.local) fails on speakers.
+input_text:
+  doorbell_chime_url:
+    name: Doorbell chime URL
+    max: 255
+    initial: "http://homeassistant.local:8123/local/doorbell.mp3"
+    mode: text
+
 # Day setpoint stored per room for heating night setback (21:00 → -3°, 5:00 → restore)
 input_number:
   living_room_day_setpoint:
