@@ -31,8 +31,6 @@ views:
                 entities:
                   - entity: light.hallway_light
                     name: Flur
-                  - entity: light.hallway_light_2
-                    name: Flur 2
                   - entity: light.living_room_ceiling_light
                     name: Wohnen
                   - entity: light.kitchen_ceiling_light
