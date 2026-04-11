@@ -83,25 +83,19 @@ views:
                 entity: weather.forecast_home
                 forecast_type: daily
 
-              - type: thermostat
-                entity: climate.living_room_heating
-                name: 🛋️ Wohnzimmer
-
-              - type: thermostat
-                entity: climate.bedroom_heating
-                name: 🛏️ Schlafzimmer
-
-              - type: thermostat
-                entity: climate.kids_room_heating
-                name: 🧒 Kinderzimmer
-
-              - type: thermostat
-                entity: climate.bathroom_heating
-                name: 🚿 Badezimmer
-
-              - type: thermostat
-                entity: climate.wc_heating
-                name: 🚽 WC
+              - type: entities
+                title: Heizung
+                entities:
+                  - entity: climate.living_room_heating
+                    name: 🛋️ Wohnzimmer
+                  - entity: climate.bedroom_heating
+                    name: 🛏️ Schlafzimmer
+                  - entity: climate.kids_room_heating
+                    name: 🧒 Kinderzimmer
+                  - entity: climate.bathroom_heating
+                    name: 🚿 Badezimmer
+                  - entity: climate.wc_heating
+                    name: 🚽 WC
 
 
   # ─── WOHNZIMMER ───────────────────────────────────────────────────────────────
