@@ -1,0 +1,251 @@
+title: Wohnung 1072
+views:
+  # ─── STARTSEITE ───────────────────────────────────────────────────────────────
+  - title: Startseite
+    icon: mdi:home
+    path: home
+    panel: true
+    cards:
+      - type: horizontal-stack
+        card_mod:
+          style: |
+            :host {
+              width: 100% !important;
+              max-width: 100% !important;
+              box-sizing: border-box;
+            }
+            :host > ha-vertical-stack {
+              flex: 1 1 0 !important;
+              min-width: 0 !important;
+            }
+            @media (max-width: 600px) {
+              :host { flex-direction: column !important; }
+              :host > ha-vertical-stack { flex: 1 1 auto !important; }
+            }
+        cards:
+          # ─── Linke Spalte ─────────────────────────────────────────────────
+          - type: vertical-stack
+            cards:
+              - type: glance
+                title: Beleuchtung
+                entities:
+                  - entity: light.hallway_light
+                    name: Flur
+                  - entity: light.living_room_ceiling_light
+                    name: Wohnen
+                  - entity: light.kitchen_ceiling_light
+                    name: Küche
+                  - entity: light.bedroom_ceiling_light
+                    name: Schlafen
+                  - entity: light.kids_room_ceiling_light
+                    name: Kinder
+                  - entity: light.bathroom_ceiling_light
+                    name: Bad
+
+              - type: horizontal-stack
+                cards:
+                  - type: tile
+                    entity: switch.bathroom_heater
+                    name: Badheizkörper
+                    icon: mdi:radiator
+                  - type: tile
+                    entity: switch.kitchen_fan
+                    name: Dunstabzug
+                    icon: mdi:fan
+                  - type: tile
+                    entity: switch.terrace_socket
+                    name: Terrasse
+                    icon: mdi:patio-heater
+
+          # ─── Mittlere Spalte ───────────────────────────────────────────────
+          - type: vertical-stack
+            cards:
+              - type: entities
+                title: Rollläden
+                entities:
+                  - entity: cover.living_room_blind_1
+                    name: Balkon
+                  - entity: cover.living_room_blinds
+                    name: Wohnzimmer
+                  - entity: cover.bedroom_blinds
+                    name: Schlafzimmer
+                  - entity: cover.kitchen_blind
+                    name: Küche
+                  - entity: cover.kids_room_blind
+                    name: Kinderzimmer
+                  - entity: cover.bathroom_blind
+                    name: Badezimmer
+
+          # ─── Rechte Spalte ─────────────────────────────────────────────────
+          - type: vertical-stack
+            cards:
+              - type: weather-forecast
+                entity: weather.forecast_home
+                forecast_type: daily
+
+              - type: thermostat
+                entity: climate.living_room_heating
+                name: 🛋️ Wohnzimmer
+
+              - type: thermostat
+                entity: climate.bedroom_heating
+                name: 🛏️ Schlafzimmer
+
+              - type: thermostat
+                entity: climate.kids_room_heating
+                name: 🧒 Kinderzimmer
+
+              - type: thermostat
+                entity: climate.bathroom_heating
+                name: 🚿 Badezimmer
+
+              - type: thermostat
+                entity: climate.wc_heating
+                name: 🚽 WC
+
+
+  # ─── WOHNZIMMER ───────────────────────────────────────────────────────────────
+  - title: Wohnzimmer
+    icon: mdi:sofa
+    path: living-room
+    cards:
+      - type: entities
+        title: Beleuchtung
+        entities:
+          - entity: light.living_room_ceiling_light
+            name: Wohnzimmer
+          - entity: light.dining_room_ceiling_light
+            name: Esszimmer
+          - entity: light.terrace_wall_light
+            name: Terrasse
+
+      - type: entities
+        title: Rollläden
+        entities:
+          - entity: cover.living_room_blinds
+            name: Alle Wohnzimmer Rollläden
+          - type: divider
+          - entity: cover.living_room_blind_1
+            name: Balkon
+          - type: divider
+          - entity: cover.living_room_blind_2
+            name: Rollladen 2
+          - entity: cover.living_room_blind_3
+            name: Rollladen 3
+
+      - type: thermostat
+        entity: climate.living_room_heating
+        name: Wohnzimmer / Küche / Esszimmer
+
+  # ─── KÜCHE ────────────────────────────────────────────────────────────────────
+  - title: Küche
+    icon: mdi:countertop
+    path: kitchen
+    cards:
+      - type: entities
+        title: Beleuchtung
+        entities:
+          - entity: light.kitchen_ceiling_light
+            name: Decke
+          - entity: light.kitchen_cabinet_light
+            name: Unterschrank
+
+      - type: entities
+        title: Geräte
+        entities:
+          - entity: switch.kitchen_fan
+            name: Dunstabzug
+          - entity: switch.terrace_socket
+            name: Terrassensteckdose
+
+      - type: entities
+        title: Rollläden
+        entities:
+          - entity: cover.kitchen_blind
+            name: Küche
+
+  # ─── SCHLAFZIMMER ─────────────────────────────────────────────────────────────
+  - title: Schlafzimmer
+    icon: mdi:bed
+    path: bedroom
+    cards:
+      - type: entities
+        title: Beleuchtung
+        entities:
+          - entity: light.bedroom_ceiling_light
+            name: Decke
+
+      - type: entities
+        title: Steckdosen
+        entities:
+          - entity: switch.bedroom_bed_sockets
+            name: Bettsteckdosen
+
+      - type: entities
+        title: Rollläden
+        entities:
+          - entity: cover.bedroom_blinds
+            name: Alle Rollläden
+          - type: divider
+          - entity: cover.bedroom_blind_1
+            name: Rollladen 1
+          - entity: cover.bedroom_blind_2
+            name: Rollladen 2
+
+      - type: thermostat
+        entity: climate.bedroom_heating
+        name: Schlafzimmer
+
+  # ─── KINDERZIMMER ─────────────────────────────────────────────────────────────
+  - title: Kinderzimmer
+    icon: mdi:teddy-bear
+    path: kids-room
+    cards:
+      - type: entities
+        title: Beleuchtung
+        entities:
+          - entity: light.kids_room_ceiling_light
+            name: Decke
+
+      - type: entities
+        title: Rollläden
+        entities:
+          - entity: cover.kids_room_blind
+            name: Rollladen
+
+      - type: thermostat
+        entity: climate.kids_room_heating
+        name: Kinderzimmer
+
+  # ─── BADEZIMMER ───────────────────────────────────────────────────────────────
+  - title: Badezimmer
+    icon: mdi:shower
+    path: bathroom
+    cards:
+      - type: entities
+        title: Beleuchtung
+        entities:
+          - entity: light.bathroom_ceiling_light
+            name: Bad Decke
+          - entity: light.bathroom_wall_light
+            name: Bad Wand
+          - entity: light.wc_ceiling_light
+            name: WC Decke
+          - entity: light.wc_wall_light
+            name: WC Wand
+
+      - type: entities
+        title: Rollläden
+        entities:
+          - entity: cover.bathroom_blind
+            name: Badezimmer
+
+      - type: entities
+        title: Heizung
+        entities:
+          - entity: switch.bathroom_heater
+            name: Badheizkörper
+          - entity: climate.bathroom_heating
+            name: Badezimmer
+          - entity: climate.wc_heating
+            name: WC

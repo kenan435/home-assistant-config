@@ -1,0 +1,214 @@
+# ─── DOORBELL NOTIFICATION ────────────────────────────────────────────────────
+
+- id: doorbell_notification
+  alias: "Doorbell - Notify"
+  description: "Push notification when doorbell rings."
+  mode: single
+  triggers:
+    - platform: state
+      entity_id: binary_sensor.doorbell
+      to: "on"
+  conditions: []
+  actions:
+    - action: notify.mobile_app_kenans_iphone
+      data:
+        title: "🔔 Front Door (1072)"
+        message: "Someone is at the front door!"
+        data:
+          push:
+            sound: default
+          tag: doorbell_1072
+
+# ─── BLINDS — MORNING OPEN (06:00) ────────────────────────────────────────────
+
+- id: blinds_morning_open
+  alias: "Blinds - Open at 6 AM"
+  description: "Open living room and bedroom blinds every morning at 06:00."
+  mode: single
+  triggers:
+    - platform: time
+      at: "06:00:00"
+  conditions:
+    - condition: state
+      entity_id: input_boolean.away_mode
+      state: "off"
+  actions:
+    - action: cover.open_cover
+      target:
+        entity_id:
+          - cover.living_room_blinds
+          - cover.bedroom_blinds
+          - cover.kitchen_blind
+
+# ─── BLINDS — EVENING 50% (20:00) ─────────────────────────────────────────────
+
+- id: blinds_evening_50
+  alias: "Blinds - 50% at 8 PM"
+  description: "Set living room and kitchen blinds to 50% at 20:00."
+  mode: single
+  triggers:
+    - platform: time
+      at: "20:00:00"
+  conditions:
+    - condition: state
+      entity_id: input_boolean.away_mode
+      state: "off"
+  actions:
+    - action: cover.set_cover_position
+      target:
+        entity_id:
+          - cover.living_room_blinds
+          - cover.kitchen_blind
+      data:
+        position: 50
+
+# ─── BLINDS — NIGHT CLOSE (22:00) ─────────────────────────────────────────────
+
+- id: blinds_night_close
+  alias: "Blinds - Close living room at 10 PM"
+  description: "Fully close living room blinds at 22:00."
+  mode: single
+  triggers:
+    - platform: time
+      at: "22:00:00"
+  conditions:
+    - condition: state
+      entity_id: input_boolean.away_mode
+      state: "off"
+  actions:
+    - action: cover.close_cover
+      target:
+        entity_id:
+          - cover.living_room_blinds
+
+# ─── AWAY MODE — CLOSE ALL BLINDS ─────────────────────────────────────────────
+
+- id: away_mode_close_all_blinds
+  alias: "Away mode - Close all blinds"
+  description: "Close all blinds when Away mode is turned on."
+  mode: single
+  triggers:
+    - platform: state
+      entity_id: input_boolean.away_mode
+      from: "off"
+      to: "on"
+  conditions: []
+  actions:
+    - action: cover.close_cover
+      target:
+        entity_id:
+          - cover.living_room_blinds
+          - cover.bedroom_blinds
+          - cover.kitchen_blind
+          - cover.kids_room_blind
+          - cover.bathroom_blind
+
+# ─── AWAY MODE OFF — OPEN ALL BLINDS ──────────────────────────────────────────
+
+- id: away_mode_off_open_all_blinds
+  alias: "Away off - Open all blinds"
+  description: "Open all blinds when Away mode is turned off."
+  mode: single
+  triggers:
+    - platform: state
+      entity_id: input_boolean.away_mode
+      from: "on"
+      to: "off"
+  conditions: []
+  actions:
+    - action: cover.open_cover
+      target:
+        entity_id:
+          - cover.living_room_blinds
+          - cover.bedroom_blinds
+          - cover.kitchen_blind
+          - cover.kids_room_blind
+          - cover.bathroom_blind
+
+# ─── HEATING NIGHT SETBACK (21:00–5:00) ───────────────────────────────────────
+
+- id: heating_night_setback
+  alias: "Heating - Night setback at 21:00"
+  description: "Save day setpoints then set all zones to 16°C overnight."
+  mode: single
+  triggers:
+    - platform: time
+      at: "21:00:00"
+  conditions: []
+  actions:
+    - action: input_number.set_value
+      target:
+        entity_id: input_number.living_room_day_setpoint
+      data:
+        value: "{{ (state_attr('climate.living_room_heating', 'target_temperature') or 21) | float }}"
+    - action: climate.set_temperature
+      target:
+        entity_id: climate.living_room_heating
+      data:
+        temperature: 16
+    - delay: "00:00:03"
+    - action: input_number.set_value
+      target:
+        entity_id: input_number.bedroom_day_setpoint
+      data:
+        value: "{{ (state_attr('climate.bedroom_heating', 'target_temperature') or 21) | float }}"
+    - action: climate.set_temperature
+      target:
+        entity_id: climate.bedroom_heating
+      data:
+        temperature: 16
+    - delay: "00:00:03"
+    - action: input_number.set_value
+      target:
+        entity_id: input_number.kids_room_day_setpoint
+      data:
+        value: "{{ (state_attr('climate.kids_room_heating', 'target_temperature') or 21) | float }}"
+    - action: climate.set_temperature
+      target:
+        entity_id: climate.kids_room_heating
+      data:
+        temperature: 16
+    - delay: "00:00:03"
+    - action: input_number.set_value
+      target:
+        entity_id: input_number.bathroom_day_setpoint
+      data:
+        value: "{{ (state_attr('climate.bathroom_heating', 'target_temperature') or 21) | float }}"
+    - action: climate.set_temperature
+      target:
+        entity_id: climate.bathroom_heating
+      data:
+        temperature: 16
+
+- id: heating_day_restore
+  alias: "Heating - Restore day setpoints at 05:00"
+  description: "Restore saved day setpoints every morning at 05:00."
+  mode: single
+  triggers:
+    - platform: time
+      at: "05:00:00"
+  conditions: []
+  actions:
+    - action: climate.set_temperature
+      target:
+        entity_id: climate.living_room_heating
+      data:
+        temperature: "{{ states('input_number.living_room_day_setpoint') | float }}"
+    - delay: "00:00:03"
+    - action: climate.set_temperature
+      target:
+        entity_id: climate.bedroom_heating
+      data:
+        temperature: "{{ states('input_number.bedroom_day_setpoint') | float }}"
+    - delay: "00:00:03"
+    - action: climate.set_temperature
+      target:
+        entity_id: climate.kids_room_heating
+      data:
+        temperature: "{{ states('input_number.kids_room_day_setpoint') | float }}"
+    - delay: "00:00:03"
+    - action: climate.set_temperature
+      target:
+        entity_id: climate.bathroom_heating
+      data:
+        temperature: "{{ states('input_number.bathroom_day_setpoint') | float }}"
