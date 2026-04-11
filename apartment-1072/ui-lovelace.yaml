@@ -80,7 +80,7 @@ views:
           - type: vertical-stack
             cards:
               - type: weather-forecast
-                entity: weather.forecast_home
+                entity: weather.forecast_home_2
                 forecast_type: daily
 
               - type: entities
