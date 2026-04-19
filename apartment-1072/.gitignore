@@ -1,6 +1,0 @@
-secrets.yaml
-.storage/
-.cloud/
-backups/
-*.log
-www/doorbell.mp3
