@@ -69,6 +69,11 @@ views:
               - type: weather-forecast
                 entity: weather.forecast_home
                 forecast_type: daily
+              - type: entities
+                title: 🚉 Karlsfeld Abfahrten
+                entities:
+                  - entity: sensor.db_infoscreen_munchen_karlsfeld_departures
+                    name: Nächste Abfahrt
               - type: glance
                 title: Commute to Work
                 entities:
