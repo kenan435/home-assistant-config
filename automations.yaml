@@ -80,7 +80,6 @@
       target:
         entity_id:
           - cover.living_room_blinds
-          - cover.kitchen_blinds
           - cover.office_blinds
       data:
         position: 50
@@ -101,7 +100,6 @@
       target:
         entity_id:
           - cover.living_room_blinds
-          - cover.kitchen_blinds
           - cover.office_blinds
 
 - id: blinds_night_living_office_closed
@@ -140,7 +138,6 @@
       target:
         entity_id:
           - cover.living_room_blinds
-          - cover.kitchen_blinds
           - cover.office_blinds
           - cover.bedroom_blinds
           - cover.rollo_bad
@@ -164,7 +161,6 @@
       target:
         entity_id:
           - cover.living_room_blinds
-          - cover.kitchen_blinds
           - cover.office_blinds
           - cover.bedroom_blinds
           - cover.rollo_bad
