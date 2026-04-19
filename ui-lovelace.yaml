@@ -119,34 +119,6 @@ views:
                     entity: switch.schalten_terrasse
                     name: Terrace
                     icon: mdi:patio-heater
-              - type: glance
-                title: Internet & Router
-                entities:
-                  - entity: sensor.fritz_box_7590_ax_download_throughput
-                    name: Download
-                  - entity: sensor.fritz_box_7590_ax_upload_throughput
-                    name: Upload
-                  - entity: sensor.fritz_box_7590_ax_external_ip
-                    name: External IP
-                  - entity: sensor.fritz_box_7590_ax_cpu_temperature
-                    name: Router Temp
-                  - entity: sensor.fritz_box_7590_ax_gb_received
-                    name: GB In
-                  - entity: sensor.fritz_box_7590_ax_gb_sent
-                    name: GB Out
-              - type: glance
-                title: Raspberry Pi
-                entities:
-                  - entity: sensor.system_monitor_processor_use
-                    name: CPU
-                  - entity: sensor.system_monitor_memory_usage
-                    name: RAM
-                  - entity: sensor.system_monitor_disk_use
-                    name: Disk
-                  - entity: sensor.system_monitor_processor_temperature
-                    name: Temp
-                  - entity: sensor.system_monitor_last_boot
-                    name: Last Boot
 
           - type: vertical-stack
             cards:
@@ -535,6 +507,41 @@ views:
 
       - type: media-control
         entity: media_player.bedroom_tv
+
+  # ─── SYSTEM ──────────────────────────────────────────────────────────────────
+  - title: System
+    icon: mdi:server
+    path: system
+    cards:
+      - type: glance
+        title: Internet & Router
+        entities:
+          - entity: sensor.fritz_box_7590_ax_download_throughput
+            name: Download
+          - entity: sensor.fritz_box_7590_ax_upload_throughput
+            name: Upload
+          - entity: sensor.fritz_box_7590_ax_external_ip
+            name: External IP
+          - entity: sensor.fritz_box_7590_ax_cpu_temperature
+            name: Router Temp
+          - entity: sensor.fritz_box_7590_ax_gb_received
+            name: GB In
+          - entity: sensor.fritz_box_7590_ax_gb_sent
+            name: GB Out
+
+      - type: glance
+        title: Raspberry Pi
+        entities:
+          - entity: sensor.system_monitor_processor_use
+            name: CPU
+          - entity: sensor.system_monitor_memory_usage
+            name: RAM
+          - entity: sensor.system_monitor_disk_use
+            name: Disk
+          - entity: sensor.system_monitor_processor_temperature
+            name: Temp
+          - entity: sensor.system_monitor_last_boot
+            name: Last Boot
 
   # ─── BASEMENT & UTILITY ──────────────────────────────────────────────────────
   - title: Basement
