@@ -78,9 +78,13 @@
   actions:
     - action: cover.set_cover_position
       target:
-        entity_id:
-          - cover.living_room_blinds
-          - cover.office_blinds
+        entity_id: cover.living_room_blinds
+      data:
+        position: 50
+    - delay: "00:00:05"
+    - action: cover.set_cover_position
+      target:
+        entity_id: cover.office_blinds
       data:
         position: 50
 
