@@ -91,7 +91,11 @@ views:
                   - entity: light.licht_kuche
                     name: Kitchen
                   - entity: light.office_light
-                    name: Office
+                    name: Office 1
+                  - entity: light.office_light_2
+                    name: Office 2
+                  - entity: light.office_light_3
+                    name: Office 3
                   - entity: light.licht_schlafen
                     name: Bedroom
                   - entity: light.licht_kind
