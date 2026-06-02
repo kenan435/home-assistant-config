@@ -249,6 +249,8 @@ knx:
       address: "1/0/42"
     - name: "Adnan's Room Light"
       address: "1/0/44"
+    - name: "Office Light"
+      address: "1/0/46"
     - name: "Upstairs Hallway Light"
       address: "1/0/54"
     - name: "Kitchen Counter Light"

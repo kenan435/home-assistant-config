@@ -90,6 +90,8 @@ views:
                     name: Living
                   - entity: light.licht_kuche
                     name: Kitchen
+                  - entity: light.office_light
+                    name: Office
                   - entity: light.licht_schlafen
                     name: Bedroom
                   - entity: light.licht_kind
