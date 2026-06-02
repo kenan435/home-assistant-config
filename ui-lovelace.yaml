@@ -84,6 +84,22 @@ views:
                     name: Almedina
                     icon: mdi:car
               - type: glance
+                title: Lights
+                entities:
+                  - entity: light.licht_wohnen
+                    name: Living
+                  - entity: light.licht_kuche
+                    name: Kitchen
+                  - entity: light.licht_schlafen
+                    name: Bedroom
+                  - entity: light.licht_kind
+                    name: Kids
+                  - entity: light.licht_zimmer
+                    name: Adnan
+                  - entity: light.licht_bad
+                    name: Bathroom
+
+              - type: glance
                 title: Security
                 entities:
                   - entity: binary_sensor.sensor_hausture
