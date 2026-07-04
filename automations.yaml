@@ -105,7 +105,6 @@
         entity_id:
           - cover.living_room_blinds
           - cover.office_blinds
-  enabled: false
 
 - id: blinds_night_living_office_closed
   alias: "Blinds - Living & Office fully closed at 10 PM"
